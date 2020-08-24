@@ -1,0 +1,43 @@
+version: '3'
+    
+services:
+  pwf-db:
+    image: postgres
+    container_name: pwf-db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=pwfood
+      - POSTGRES_USER=pwfood
+      - POSTGRES_PASSWORD=abc123
+      - TZ=America/Managua
+    networks:
+      - pwfnetwork
+
+  pwf-admin:
+    container_name: pwf-admin
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - local.env
+    volumes: 
+      - .:/code
+    ports:
+      - "8012:8000"
+    depends_on:
+      - pwf-db
+    networks:
+      - pwfnetwork
+
+  pwf-redis00:
+    image: "redis:5.0"
+    container_name: pwf-redis00
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - pwfnetwork
+
+networks:
+  pwfnetwork:
+    driver: bridge
+

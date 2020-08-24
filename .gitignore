@@ -1,0 +1,14 @@
+i__pycache__/
+*.py[cod]
+*.log
+*.pot
+*.pyc
+__pycache__/
+*.env
+.env
+local.env
+/media/*
+/app/*/migrations/*
+/pgdata
+/static/admin/
+
