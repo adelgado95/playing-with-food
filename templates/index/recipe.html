@@ -16,6 +16,8 @@
     <link rel="stylesheet"  href="http://159.65.226.234:8013/static/multislider/multislider.css">
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet">
+
 
 
 
@@ -106,7 +108,9 @@
         width: 115px;
       }
       .row-horizontal_img {
-        height: 34vh;
+
+      }
+      .recipe_img {
         width: 100%;
         object-fit: cover;
       }
@@ -157,11 +161,15 @@
       .bottom-padded-row {
         padding-bottom: 10vh;
       }
-      input[type="text"], textarea {
-        background-color : #F6DFA4;
+      li {
+        list-style-type: none; 
+        font-size: 1em;
       }
-
-      
+      .row-max-width-md {
+        max-width: 600px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
       @keyframes fadeIn{
         from {
           opacity: 0;
@@ -251,47 +259,84 @@
       <div class="container-fluid">
         <div class="row row-vertically-centered bottom-padded-row">
           <div class="row row-max-width row-vertically-centered">
-            <div class="col-12 col-md-6">
-              <h2>
-              Jugando con recetas y fotografías gastronómicas.
-            </h2>
+            <div class="col-12 col-md-12" style="margin-bottom: 10px">
+              <img class="recipe_img" src="{{recipe.imagen.url}}" alt="cofeeimage">
             </div>
-            <div class="col-12 col-md-6">
-              <img class="row-horizontal_img cardbordered" src="https://dummyimage.com/600x400/000/fff" alt="cofeeimage">
-            </div>
-          </div>
-          
-        </div>
-        <br>
-        <div class="row row-vertically-centered bottom-padded-row">
-          <div class="row row-max-width">
-          <div class="col-12 col-md-6">
-            <img class="row-vertical_img cardbordered" src="https://dummyimage.com/400x600/000/fff" alt="cofeeimage">
-          </div>
-          <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
-            <h2 style="flex-grow: 1;margin-top: auto; "></h2>
-            <div style="width: 100%;font-size: 3em;">
-              <p>Jessica</p>
-            </div>
+            <div class="col-12 col-md-12">
+                <hr style='border-top: 1px solid black;'>
+              </div>
+              <div class="col-12 col-md-12">
+                <h1 style="text-align:center">{{recipe.nombre}}</h1>
+              </div>
+              <div class="col-12 col-md-12">
+                <hr style='border-top: 1px solid black;'>
+              </div>
             
-            <div style="width: 100%;font-size:2em">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem est 
-                sed voluptatum tenetur possimus saepe voluptates deleniti veritatis officia. 
-                Ullam placeat accusamus, odit repellat aperiam quis quos nobis iure ipsa?</p>
+              <div class="row" style="width: 100%;">
+                <div class="col-12 col-md-6" style="margin-right:0px;padding-right:0px;">
+                    <h2 style="text-align:left">Ingredientes</h2>
+                    {% if recipe.get_ingredients %}
+                      {% for i in recipe.get_ingredients %}
+                        <li style="margin-bottom: 5px">
+                          {{i.cantidad}} {{i.nombre}}
+                        </li>
+                      {% endfor %}
+                    {% endif   %}
+                    {% if recipe.get_sub_recipes %}
+                      {% for subrecipe in recipe.get_sub_recipes %}
+                      <h4>{{subrecipe.nombre}}</h4>    
+                        {% if subrecipe.get_ingredients %}
+                          {% for ing in subrecipe.get_ingredients %}
+                          <li style="margin-bottom: 5px">
+                            {{ing.cantidad}} {{ing.nombre}}
+                          </li>
+                          {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                    <h3>Para tal cosa</h3>
+                        <li>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit
+                        </li>
+                  </div>
+                <div class="col-12 col-md-6" style="margin-left:0px;padding-left:0px;">
+                    <h2 style="text-align:left;">Preparación</h2>
+                    {% if recipe.get_pasos_preparacion %}
+                      {% for paso in recipe.get_pasos_preparacion %}
+                        <p>{{paso.numero}}. {{paso.descripcion}}</p>
+                      {% endfor %}
+                    {% endif  %}
 
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem est 
-                  sed voluptatum tenetur possimus saepe voluptates deleniti veritatis officia. 
-                  Ullam placeat accusamus, odit repellat aperiam quis quos nobis iure ipsa?</p>
-
-              </p>
+                </div>
             </div>
-           </div>
-          </div>
-        </div> 
-        <div class="row row-padded row-vertically-centered bottom-padded-row" style="background-color:#FFFDF0;">
-          <div class="row row-max-width-lg">
+            <div class="row row-max-width-lg" style="padding-top: 6vh; padding-bottom: 7vh">
+                <div class="col-12 col-md-12" style="background-color: #F6DFA4;padding: 2em;text-align: center;">
+                    <h2>Hiciste esta receta?</h2>
+                    <p style="font-size: 1em">Me encantaría ver el resultado, subila a instragra y etiquetame
+                      
+                    </p>
+                    <p><strong>@playingwithfoodni</strong></p>
+                    <button style="letter-spacing: 5px;" class="btn btn-primary">Pinear</button>
+                    <button style="letter-spacing: 5px;"  class="btn btn-primary">Compartir</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-12">
+                <hr style='border-top: 1px solid black;'>
+            </div>
             <div class="col-12">
-              <h1 style="text-align:center">Recetas</h1>
+              <h2 style="text-align:left; margin: 20px 0px;">Ver más Recetas</h2>
             </div>
             <div class="col-12 col-md-4">
               <img class="recetas_img " src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
@@ -303,92 +348,7 @@
               <img class="recetas_img" src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
             </div>
           </div>
-
-        </div>
-
-        <div class="row row-padded row-vertically-centered bottom-padded-row">
-          <div class="row row-max-width-lg">
-            <div class="col-12 col-md-6">
-              <img class="blog_img " src="https://dummyimage.com/600x400/000/fff" alt="cofeeimage">
-            </div>
-            <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
-              <h2 style="flex-grow: 1;margin-top: auto; "></h2>
-              <div style="width: 100%;font-size: 3em;">
-                <p>Entrada Blog 1</p>
-                <p style="font-size:1em">fecha</p>
-              </div>
-              
-              <div style="width: 100%;font-size:2em">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem est 
-                  sed voluptatum tenetur possimus saepe voluptates deleniti veritatis officia. 
-                  Ullam placeat accusamus, odit repellat aperiam quis quos nobis iure ipsa?</p>
-
-  
-                </p>
-              </div>
-             </div>
-            
-          </div>
-
-        </div>
-
-        <div class="row row-padded row-vertically-centered bottom-padded-row" style="background-color:#FFFDF0;">
-          <div class="row row-max-width-lg">
-            <div class="col-12">
-              <h1 style="text-align:center">Servicios</h1>
-            </div>
-            <div class="col-12 col-md-4">
-              <img class="servicios_img " src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
-            </div>
-            <div class="col-12 col-md-4">
-              <img class="servicios_img " src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
-            </div>
-            <div class="col-12 col-md-4">
-              <img class="servicios_img" src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
-            </div>
-          </div>
-
-        </div>
-        <div class="row row-padded row-vertically-centered bottom-padded-row"">
-          <div class="row row-max-width-lg">
-            <div class="col-12 col-md-6">
-              <h1 style="text-align:center">Contacto</h1>
-            </div>
-            <div class="col-12 col-md-6">
-            </div>
-           
-            <div class="col-12 col-md-6 bottom-padded-row">
-              <form>
-                <p>Para colaboraciones cotizaciones o para saludar, llena el formulario y vemos en que te podemos ayudar.</p>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="lastname">Apellidos</label>
-                    <input type="text" class="form-control" id="lastname">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="topic">Asunto</label>
-                  <input type="text" class="form-control" id="topic" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress2">Mensaje</label>
-                  <input type="text" class="form-control" id="message" placeholder="">
-                </div>
-                <div class="form-group">
-                </div>
-                <button type="submit" class="btn" style="background-color: #F6DFA4">Enviar</button>
-              </form>
-            </div>
-            <div class="col-12 col-md-6">
-              <img class="" src="https://dummyimage.com/300x300/000/fff" alt="cofeeimage">
-            </div>
-
-          </div>
-
+          
         </div>
         </div>
        
