@@ -11,4 +11,4 @@ local.env
 /app/*/migrations/*
 /pgdata
 /static/admin/
-
+/geoip

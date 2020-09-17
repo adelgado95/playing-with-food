@@ -156,6 +156,8 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip/')
+
 # jazzmin settings
 
 JAZZMIN_SETTINGS = {
