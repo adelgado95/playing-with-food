@@ -15,6 +15,7 @@ class IndexView(TemplateView):
 def recipe_view(request, slug):
     print(slug)
     g = GeoIP2()
+    print(request.META)
     try:
         ip = request.META.get('REMOTE_ADDR', None)
         if ip:
