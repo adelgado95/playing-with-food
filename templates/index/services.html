@@ -1,0 +1,114 @@
+{% include 'index/partials/head.html' %}
+  <body>
+    {% include 'index/partials/navbar.html' %}
+      <div class="container-fluid">
+        <div class="row row-vertically-centered bottom-padded-row">
+
+        <div class="row row-max-width">
+          <div class="col-12 col-md-6">
+            <img class="row-vertical_img cardbordered" src="https://www.playingwithfoodni.com/static/site/images/index/Contenidoredes.png" alt="cofeeimage">
+          </div>
+
+
+          <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
+            <h2 style="flex-grow: 1;margin-top: auto; "></h2>
+            <div style="width: 100%;font-size: 3em;font-weight: bold;">
+              <p>Fotografía gastronómica y contenido de redes</p>
+            </div>
+            
+            <div style="width: 100%;font-size:2em">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem est 
+                sed voluptatum tenetur possimus saepe voluptates deleniti veritatis officia. 
+                Ullam placeat accusamus, odit repellat aperiam quis quos nobis iure ipsa?</p>
+            </div>
+           </div>
+        </div>
+
+          <div class="row row-max-width" style="padding-top: 50px;">
+            <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
+              <h2 style="flex-grow: 1;margin-top: auto; "></h2>
+              <div style="width: 100%;font-size: 3em;font-weight: bold;">
+                <p>Branding Gastronómico</p>
+              </div>
+              
+              <div style="width: 100%;font-size:2em">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem est 
+                  sed voluptatum tenetur possimus saepe voluptates deleniti veritatis officia. 
+                  Ullam placeat accusamus, odit repellat aperiam quis quos nobis iure ipsa?</p>
+              </div>
+             </div>
+
+             <div class="col-12 col-md-6">
+                <img class="row-vertical_img cardbordered" src="https://www.playingwithfoodni.com/static/site/images/index/Jalea-Chilitos.png" alt="cofeeimage">
+              </div>
+            </div>
+
+
+            <div class="row row-max-width" style="padding-top: 50px;">
+                <div class="col-12 col-md-6">
+                  <img class="row-vertical_img cardbordered" src="https://www.playingwithfoodni.com/static/site/images/index/Foodstying.png" alt="cofeeimage">
+                </div>
+      
+      
+                <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
+                  <h2 style="flex-grow: 1;margin-top: auto; "></h2>
+                  <div style="width: 100%;font-size: 3em;font-weight: bold;">
+                    <p>Fotografía gastronómica y contenido de redes</p>
+                  </div>
+                  
+                  <div style="width: 100%;font-size:2em">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem est 
+                      sed voluptatum tenetur possimus saepe voluptates deleniti veritatis officia. 
+                      Ullam placeat accusamus, odit repellat aperiam quis quos nobis iure ipsa?</p>
+                  </div>
+                 </div>
+              </div>
+
+
+
+        </div> 
+      
+
+      
+        </div>
+        <footer class="footer">
+          <div class="container" style="text-align: center;">
+            <span class="text" style="font-weight: bold;">&copy; Playing with Food</span>
+          </div>
+        </footer>
+</div>
+
+  <script src="https://www.playingwithfoodni.com/static/multislider/multislider.js"></script>
+  <script>
+    $(document).ready(function(){
+
+
+      var scrollTop = 0;
+      $(window).scroll(function(){
+        
+        scrollTop = $(window).scrollTop();
+        $('.counter').html(scrollTop);
+        
+        if (scrollTop >= 100) {
+          console.log('hello');
+          $('.navbar').addClass('scrolled-nav');
+          $('.navbar-brand').removeClass('initial-none');
+          $('.navbar-brand').addClass('fade_in');
+        } else if (scrollTop < 100) {
+          console.log('hello2');
+          $('.navbar').removeClass('scrolled-nav');
+          $('.header-main-logocontainer').removeClass('initial-none');
+          $('#global-nav').removeClass('scrolled-nav');
+          $('.navbar-brand').removeClass('fade_in');
+          $('.navbar-brand').addClass('initial-none');
+          
+          
+
+        }
+        
+      }); 
+      
+    });
+  </script>
+  </body>
+</html>

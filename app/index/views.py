@@ -15,6 +15,15 @@ class IndexView(TemplateView):
         context['categories'] = [ c for c in Categoria.objects.all() ]
         return self.render_to_response(context)
 
+class ServicesView(TemplateView):
+    template_name = 'index/services.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['categories'] = [ c for c in Categoria.objects.all() ]
+        return self.render_to_response(context)
+
+
 def recipe_view(request, slug):
     print(slug)
     g = GeoIP2()
