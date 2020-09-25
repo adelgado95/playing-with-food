@@ -20,6 +20,10 @@ class Receta(ActiveInactive):
 
     def __str__(self):
         return self.nombre
+
+    @property
+    def get_absolute_url(self):
+        return '/recipe/{0}'.format(self.slug)
     
     @property
     def get_sub_recipes(self):
@@ -41,6 +45,27 @@ class Receta(ActiveInactive):
             paso
             for paso in self.paso_set.all().order_by('numero')
         ]
+
+    @property
+    def get_last_recipes(self):
+        erased = False
+        recipes = [ 
+            { 
+                'id': r.pk,
+                'title': r.nombre, 
+                'imagen': r.imagen.url ,
+                'url': r.get_absolute_url
+            } 
+            for r in Receta.objects.all().order_by('-fecha_creacion')[:4] 
+        ]
+        for r in recipes:
+            if r['id'] == self.pk:
+                recipes.remove(r)
+                erased = True
+        if not erased:
+            recipes.pop()
+        return recipes            
+
 
 class Ingrediente(ActiveInactive):
     nombre = models.CharField(max_length=100)

@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="http://159.65.226.234:8013/static/site/css/bootstrap.css">
     <link rel="stylesheet"  href="http://159.65.226.234:8013/static/multislider/multislider.css">
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
 
 
 
@@ -194,6 +193,11 @@
       }
 
 
+      body {
+        font-family: 'Questrial', sans-serif;
+      }
+
+
 /* Icon CSS */
 
     </style>
@@ -338,15 +342,20 @@
             <div class="col-12">
               <h2 style="text-align:left; margin: 20px 0px;">Ver más Recetas</h2>
             </div>
-            <div class="col-12 col-md-4">
-              <img class="recetas_img " src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
-            </div>
-            <div class="col-12 col-md-4">
+            {% for receta in recipe.get_last_recipes %}
+              <div class="col-12 col-md-4">
+                <a href="{{receta.url}}">
+                  <img class="recetas_img " src="{{receta.imagen}}" alt="cofeeimage">
+                </a>
+              </div>
+            {% endfor %}
+            
+            <!--<div class="col-12 col-md-4">
               <img class="recetas_img " src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
             </div>
             <div class="col-12 col-md-4">
               <img class="recetas_img" src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
-            </div>
+            </div>-->
           </div>
           
         </div>
