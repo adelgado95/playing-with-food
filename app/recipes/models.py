@@ -17,6 +17,8 @@ class Receta(ActiveInactive):
     estado = models.BooleanField(default=True)
     fecha_creacion = models.DateField(default=datetime.date.today)
 
+    def get_absolute_url(self):
+        return 'recipe/{0}/'.format(self.slug)
 
     def __str__(self):
         return self.nombre

@@ -5,7 +5,7 @@
         <div class="row row-vertically-centered bottom-padded-row">
           <div class="row row-max-width row-vertically-centered">
             <div class="col-12 col-md-6">
-              <h2>
+              <h2>  
               Jugando con recetas y fotografías gastronómicas.
             </h2>
             </div>
@@ -61,22 +61,20 @@
         <div class="row row-padded row-vertically-centered bottom-padded-row">
           <div class="row row-max-width-lg">
             <div class="col-12 col-md-6">
-              <img class="blog_img " src="https://dummyimage.com/600x400/000/fff" alt="cofeeimage">
+              <img class="blog_img " src="{{ latest_blog.banner.url }}" alt="cofeeimage">
             </div>
             <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
               <h2 style="flex-grow: 1;margin-top: auto; "></h2>
               <div style="width: 100%;font-size: 3em;">
-                <p>Entrada Blog 1</p>
-                <p style="font-size:1em">fecha</p>
+                <p>{{ latest_blog.titulo }}</p>
+                <p style="font-size:0.5em">{{ latest_blog.fecha }} por {{ latest_blog.autor }}</p>
               </div>
               
               <div style="width: 100%;font-size:2em">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem est 
-                  sed voluptatum tenetur possimus saepe voluptates deleniti veritatis officia. 
-                  Ullam placeat accusamus, odit repellat aperiam quis quos nobis iure ipsa?</p>
-
-  
-                </p>
+                <p> {{ latest_blog.contenido }}</p>
+              </div>   
+              <div style="width: 100%;font-size:2em">
+                <p> <a href="{{ latest_blog.get_absolute_url }}"> Ver mas </a> </p>
               </div>
              </div>
             

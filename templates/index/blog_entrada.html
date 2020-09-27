@@ -224,109 +224,30 @@
         <div class="row row-vertically-centered bottom-padded-row">
           <div class="row row-max-width row-vertically-centered">
             <div class="col-12 col-md-12" style="margin-bottom: 10px">
-              <img class="recipe_img" src="{{recipe.imagen.url}}" alt="cofeeimage">
+              <img class="recipe_img" src="{{entrada.banner.url}}" alt="cofeeimage">
             </div>
-            <div class="col-12 col-md-12">
-                <hr style='border-top: 1px solid black;'>
+              <div class="col-12 col-md-12">
+                <h1 style="text-align:left">{{entrada.titulo}}</h1>
               </div>
               <div class="col-12 col-md-12">
-                <h1 style="text-align:center">{{recipe.nombre}}</h1>
+                <p style="text-align:left"> {{ entrada.fecha }} por {{ entrada.autor }}</p>
               </div>
               <div class="col-12 col-md-12">
-                <hr style='border-top: 1px solid black;'>
+                  {% for p in entrada.get_paragraphs %}
+                  <p style="text-align:left; font-size: 1.3em"> {{ p }}</p>
+                  {% endfor %}
+                
               </div>
-            
-              <div class="row" style="width: 100%;">
-                <div class="col-12 col-md-6" style="margin-right:0px;padding-right:0px;">
-                    <h2 style="text-align:left">Ingredientes</h2>
-                    {% if recipe.get_ingredients %}
-                      {% for i in recipe.get_ingredients %}
-                        <li style="margin-bottom: 5px">
-                          {{i.cantidad}} {{i.nombre}}
-                        </li>
-                      {% endfor %}
-                    {% endif   %}
-                    {% if recipe.get_sub_recipes %}
-                      {% for subrecipe in recipe.get_sub_recipes %}
-                      <h4>{{subrecipe.nombre}}</h4>    
-                        {% if subrecipe.get_ingredients %}
-                          {% for ing in subrecipe.get_ingredients %}
-                          <li style="margin-bottom: 5px">
-                            {{ing.cantidad}} {{ing.nombre}}
-                          </li>
-                          {% endfor %}
-                        {% endif %}
-                      {% endfor %}
-                    {% endif %}
-                    <h3>Para tal cosa</h3>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit
-                        </li>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit
-                        </li>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit
-                        </li>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit
-                        </li>
-                        <li>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit
-                        </li>
-                  </div>
-                <div class="col-12 col-md-6" style="margin-left:0px;padding-left:0px;">
-                    <h2 style="text-align:left;">Preparación</h2>
-                    {% if recipe.get_pasos_preparacion %}
-                      {% for paso in recipe.get_pasos_preparacion %}
-                        <p>{{paso.numero}}. {{paso.descripcion}}</p>
-                      {% endfor %}
-                    {% endif  %}
 
-                </div>
-            </div>
-            <div class="row row-max-width-lg" style="padding-top: 6vh; padding-bottom: 7vh">
-                <div class="col-12 col-md-12" style="background-color: #F6DFA4;padding: 2em;text-align: center;">
-                    <h2>Hiciste esta receta?</h2>
-                    <p style="font-size: 1em">Me encantaría ver el resultado, subila a instragra y etiquetame
-                      
-                    </p>
-                    <p><strong>@playingwithfoodni</strong></p>
-                    <button style="letter-spacing: 5px;" class="btn btn-primary">Pinear</button>
-                    <button style="letter-spacing: 5px;"  class="btn btn-primary">Compartir</button>
-                </div>
-            </div>
-            <div class="col-12 col-md-12">
-                <hr style='border-top: 1px solid black;'>
-            </div>
-            <div class="col-12">
-              <h2 style="text-align:left; margin: 20px 0px;">Ver más Recetas</h2>
-            </div>
-            {% for receta in recipe.get_last_recipes %}
-              <div class="col-12 col-md-4">
-                <a href="{{receta.url}}">
-                  <img class="recetas_img " src="{{receta.imagen}}" alt="cofeeimage">
-                </a>
-              </div>
-            {% endfor %}
-            
-            <!--<div class="col-12 col-md-4">
-              <img class="recetas_img " src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
-            </div>
-            <div class="col-12 col-md-4">
-              <img class="recetas_img" src="https://dummyimage.com/600x700/000/fff" alt="cofeeimage">
-            </div>-->
           </div>
           
         </div>
         </div>
-       
-
         <footer class="footer">
-          <div class="container" style="text-align: center;">
-            <span class="text" style="font-weight: bold;">&copy; Playing with Food</span>
-          </div>
-        </footer>
+            <div class="container" style="text-align: center;">
+              <span class="text" style="font-weight: bold;">&copy; Playing with Food</span>
+            </div>
+          </footer>
 </div>
   <script src="http://159.65.226.234:8013/static/multislider/multislider.js"></script>
   <script>

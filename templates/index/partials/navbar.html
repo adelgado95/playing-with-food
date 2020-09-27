@@ -30,10 +30,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% for category in categories %}
-                <a class="dropdown-item" style="text-align:center;" href="/category/{{category.nombre}}">{{ category.nombre }}</a>
+                <a class="dropdown-item" style="text-align:center;" href="/category/{{category.nombre}}/">{{ category.nombre }}</a>
               {% endfor %}
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
           <li class="nav-item active">
