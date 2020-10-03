@@ -5,7 +5,7 @@
         <div class="row row-vertically-centered bottom-padded-row">
           <div class="row row-max-width row-vertically-centered">
             <div class="col-12 col-md-6">
-              <h2>  
+              <h2 class="weighted-title">  
               Jugando con recetas y fotografías gastronómicas.
             </h2>
             </div>
@@ -22,7 +22,7 @@
           </div>
           <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
             <h2 style="flex-grow: 1;margin-top: auto; "></h2>
-            <div style="width: 100%;font-size: 3em;">
+            <div style="width: 100%;font-size: 3em;font-weight: 600;">
               <p>Jessica</p>
             </div>
             
@@ -43,16 +43,32 @@
         <div class="row row-padded row-vertically-centered bottom-padded-row" style="background-color:#FFFDF0;">
           <div class="row row-max-width-lg">
             <div class="col-12">
-              <h1 style="text-align:center">Recetas</h1>
+              <h1 style="text-align:center" class="weighted-title"> Recetas</h1>
             </div>
             <div class="col-12 col-md-4">
-              <img class="recetas_img " src="https://www.playingwithfoodni.com/static/site/images/index/Todas.png" alt="cofeeimage">
+              <a href="/category/" style="text-decoration: None;color:black;">
+                <img class="recetas_img " style="margin-bottom: 0px" src="https://www.playingwithfoodni.com/static/site/images/index/Todas.png" alt="cofeeimage">
+                <div class="recetas_img" style="background-color: #F6DFA4;text-align: center;font-weight: 600;font-size: 1.6em">
+                  Todas
+                </div>
+  
+              </a>
             </div>
             <div class="col-12 col-md-4">
-              <img class="recetas_img " src="https://www.playingwithfoodni.com/static/site/images/index/Saladas.png" alt="cofeeimage">
+              <a href="/category/Dulce/" style="text-decoration: None;color:black;">
+                <img class="recetas_img " style="margin-bottom: 0px" src="https://www.playingwithfoodni.com/static/site/images/index/Saladas.png" alt="cofeeimage">
+                <div class="recetas_img" style="background-color: #F6DFA4;text-align: center;font-weight: 600;font-size: 1.6em">
+                    Dulces
+                </div>
+              </a>
             </div>
             <div class="col-12 col-md-4">
-              <img class="recetas_img" src="https://www.playingwithfoodni.com/static/site/images/index/Dulces.png" alt="cofeeimage">
+              <a href="/category/Dulce/" style="text-decoration: None;color:black;">
+                <img class="recetas_img" style="margin-bottom: 0px" src="https://www.playingwithfoodni.com/static/site/images/index/Dulces.png" alt="cofeeimage">
+                <div class="recetas_img" style="background-color: #F6DFA4;text-align: center;font-weight: 600;font-size: 1.6em">
+                  Saladas
+                </div>
+              </a>
             </div>
           </div>
 
@@ -62,16 +78,17 @@
           <div class="row row-max-width-lg">
             <div class="col-12 col-md-6">
               <img class="blog_img " src="{{ latest_blog.banner.url }}" alt="cofeeimage">
+              
             </div>
             <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
               <h2 style="flex-grow: 1;margin-top: auto; "></h2>
               <div style="width: 100%;font-size: 3em;">
-                <p>{{ latest_blog.titulo }}</p>
+                <p class="weighted-title">{{ latest_blog.titulo }}</p>
                 <p style="font-size:0.5em">{{ latest_blog.fecha }} por {{ latest_blog.autor }}</p>
               </div>
               
               <div style="width: 100%;font-size:2em">
-                <p> {{ latest_blog.contenido }}</p>
+                <p> {{ latest_blog.index_summarize }}</p>
               </div>   
               <div style="width: 100%;font-size:2em">
                 <p> <a href="{{ latest_blog.get_absolute_url }}"> Ver mas </a> </p>
@@ -85,56 +102,75 @@
         <div class="row row-padded row-vertically-centered bottom-padded-row" style="background-color:#FFFDF0;">
           <div class="row row-max-width-lg">
             <div class="col-12">
-              <h1 style="text-align:center">Servicios</h1>
+              <h1 style="text-align:center" class="weighted-title">Servicios</h1>
             </div>
             <div class="col-12 col-md-4">
               <img class="servicios_img " src="https://www.playingwithfoodni.com/static/site/images/index/Contenidoredes.png" alt="cofeeimage">
+              <div class="recetas_img recipes-category_sub"  style="">
+                Fotografía gastronómica y 
+                contenido para redes
+              </div>
             </div>
             <div class="col-12 col-md-4">
               <img class="servicios_img " src="https://www.playingwithfoodni.com/static/site/images/index/Jalea-Chilitos.png" alt="cofeeimage">
+              <div class="recetas_img recipes-category_sub" style="background-color: #F6DFA4;text-align: center;font-weight: 500;font-size: 1.4em; padding: 10px;min-height: 90px;" >
+                Branding gastronómico
+              </div>
             </div>
             <div class="col-12 col-md-4">
               <img class="servicios_img" src="https://www.playingwithfoodni.com/static/site/images/index/Dulces.png" alt="cofeeimage">
+              <div class="recetas_img recipes-category_sub" style="background-color: #F6DFA4;text-align: center;font-weight: 500;font-size: 1.4em; padding: 10px;min-height: 90px;">
+                Food & Prop styling
+              </div>
             </div>
           </div>
 
         </div>
-        <div class="row row-padded row-vertically-centered bottom-padded-row"">
+        <div class="row row-padded row-vertically-centered bottom-padded-row" style="">
           <div class="row row-max-width-lg">
             <div class="col-12 col-md-6">
-              <h1 style="text-align:center; font-weight: bold;">Contacto</h1>
+              <h1 style="text-align:center; font-weight: 600;">Contacto</h1>
             </div>
             <div class="col-12 col-md-6">
             </div>
            
-            <div class="col-12 col-md-6 bottom-padded-row">
-              <form>
-                <p style="font-size: 2em;">Para colaboraciones cotizaciones o para saludar, llena el formulario y vemos en que te podemos ayudar.</p>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name">
+            <div class="col-12 col-md-12 bottom-padded-row" style=" display: flex;justify-content: center;">
+              <div style="width: 100%; display: flex;justify-items: center;justify-content: center; max-width: 900px;">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <form >
+                      <p style="font-size: 1em;">Para colaboraciones cotizaciones o para saludar. <br> Llena el formulario y vemos en que te podemos ayudar.</p>
+                      <div class="form-row" style="margin-top:10px">
+                        <div class="form-group col-md-6">
+                          <label for="name">Nombre</label>
+                          <input style="margin-top:10px" type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="lastname">Apellidos</label>
+                          <input type="text" class="form-control" style="margin-top:10px" id="lastname">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="topic">Asunto</label>
+                        <input type="text" class="form-control" style="margin-top:10px" id="topic" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress2">Mensaje</label>
+                        <input style="margin-top:10px" type="text" class="form-control" id="message" placeholder="">
+                      </div>
+                      <div class="form-group">
+                      </div>
+                      <button type="submit" class="btn" style="background-color: #F6DFA4; margin-top: 20px">Enviar</button>
+                    </form>
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="lastname">Apellidos</label>
-                    <input type="text" class="form-control" id="lastname">
+                  <div class="col-12 col-md-6">
+                    <img style="width: 100%;margin-left: 10px;margin-top: 10px" src="https://www.playingwithfoodni.com/static/site/images/index/Jessica-Ruiz.png" alt="cofeeimage">
                   </div>
+                  
                 </div>
-                <div class="form-group">
-                  <label for="topic">Asunto</label>
-                  <input type="text" class="form-control" id="topic" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress2">Mensaje</label>
-                  <input type="text" class="form-control" id="message" placeholder="">
-                </div>
-                <div class="form-group">
-                </div>
-                <button type="submit" class="btn" style="background-color: #F6DFA4">Enviar</button>
-              </form>
-            </div>
-            <div class="col-12 col-md-6">
-              <img class="recetas_img" src="https://www.playingwithfoodni.com/static/site/images/index/Jessica-Ruiz.png" alt="cofeeimage">
+             
+              </div>
+             
             </div>
 
           </div>

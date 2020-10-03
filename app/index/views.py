@@ -67,3 +67,11 @@ def category_view(request, category):
         'categories': [ c for c in Categoria.objects.all() ]
     }
     return render(request, 'index/category.html', context)
+
+def category_all_view(request):
+    recipes = Receta.objects.all()
+    context = {
+        'recipes': recipes,
+        'categories': [ c for c in Categoria.objects.all() ]
+    }
+    return render(request, 'index/category.html', context)

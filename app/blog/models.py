@@ -19,3 +19,7 @@ class Entrada(ActiveInactive):
     @property
     def get_paragraphs(self):
         return self.contenido.split('\n')
+
+    @property
+    def index_summarize(self):
+        return self.contenido[:190] if len(self.contenido) > 190 else self.contenido
