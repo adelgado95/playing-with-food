@@ -23,38 +23,6 @@
           </div>
         </footer>
 </div>
-
-  <script src="https://www.playingwithfoodni.com/static/multislider/multislider.js"></script>
-  <script>
-    $(document).ready(function(){
-
-
-      var scrollTop = 0;
-      $(window).scroll(function(){
-        
-        scrollTop = $(window).scrollTop();
-        $('.counter').html(scrollTop);
-        
-        if (scrollTop >= 100) {
-          console.log('hello');
-          $('.navbar').addClass('scrolled-nav');
-          $('.navbar-brand').removeClass('initial-none');
-          $('.navbar-brand').addClass('fade_in');
-        } else if (scrollTop < 100) {
-          console.log('hello2');
-          $('.navbar').removeClass('scrolled-nav');
-          $('.header-main-logocontainer').removeClass('initial-none');
-          $('#global-nav').removeClass('scrolled-nav');
-          $('.navbar-brand').removeClass('fade_in');
-          $('.navbar-brand').addClass('initial-none');
-          
-          
-
-        }
-        
-      }); 
-      
-    });
-  </script>
+{% include 'index/partials/scripts.html' %}
   </body>
 </html>

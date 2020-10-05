@@ -32,6 +32,11 @@
        transition: visibility 0s, opacity 0.5s linear;
 
       }
+      .initial-none2 {
+       display: none;
+       opacity: 0;
+      }
+
       .fade_in {
         animation: fadeIn 2s;
       }
@@ -47,6 +52,13 @@
         text-align: right;
         align-items: right;
         background-color: #FFFDF0 ;
+      }
+      .header-social-media2{
+        padding-right: 5px;
+        text-align: right;
+        align-items: right;
+        background-color: #FFFDF0 ;
+        display: None;
       }
       .navbar-toggler-icon {
         color: black;
@@ -68,7 +80,20 @@
         align-items: center;
         justify-content: center;
       }
+      .header-main-logocontainer2 {
+        margin-top: 5px;
+        background-color: #FFFDF0 ;
+        display: grid;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        display: None;
+      }
+      
       .header-mainlogo {
+        height: 30vh;
+      }
+      .header-mainlogo2{
         height: 30vh;
       }
       .nav-brand {
@@ -76,6 +101,9 @@
         -prefix-animation: slide 1s ease 3.5s forwards;
         -webkit-transition: height .5s, line-height .5s; /* Safari */
         transition: height .5s, line-height .5s;
+      }
+      .navbar-brand2 {
+        display: None;
       }
       .row-vertically-centered {
         display: flex;
@@ -195,6 +223,12 @@
       }
       @media screen and (max-width: 480px)
       {
+        .navbar-toggler {
+          border: 0px;
+        }
+        .navbar-toggler::after {
+          b
+        }
         .first-title {
           font-size: 1.3em;
           margin-bottom: 30px;
@@ -225,12 +259,35 @@
           padding-right: 25px;
         }
       }
-      @media screen and (max-width: 767px)
+      @media screen and (max-width: 991px)
       {
         .contact_img {
           margin-left: 0px;
         }
-      }  
+        .navbar-toggler {
+          border: 0px;
+        }
+        .navbar-toggler:focus,
+        .navbar-toggler:active,
+        .navbar-toggler-icon:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .header-mainlogo {
+          display: None;
+        }
+        .header-social-media {
+          display: None;
+        }
+        .header-social-media2 {
+          display: inline;
+        }
+       .header-main-logocontainer {
+          display: None;        
+        }  
+        .header-main-logocontainer2 {
+          display: grid;        
+      }
       @media screen and (min-width: 576px) {
         .right-hide {
           display: none;

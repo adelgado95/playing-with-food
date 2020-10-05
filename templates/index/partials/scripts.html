@@ -1,0 +1,35 @@
+
+  <script>
+    $(document).ready(function(){
+
+
+      var scrollTop = 0;
+      $(window).scroll(function(){
+        
+        scrollTop = $(window).scrollTop();
+        $('.counter').html(scrollTop);
+        
+        if (scrollTop >= 100) {
+          console.log('hello');
+          $('.navbar').addClass('scrolled-nav');
+          $('.navbar-brand').removeClass('initial-none');
+          $('.navbar-brand').addClass('fade_in');
+          $('.header-social-media2').addClass('initial-none2');
+        } else if (scrollTop < 100) {
+          console.log('hello2');
+          $('.navbar').removeClass('scrolled-nav');
+          $('.header-social-media2').removeClass('initial-none2');
+          $('.header-main-logocontainer').removeClass('initial-none');
+          $('#global-nav').removeClass('scrolled-nav');
+          $('.navbar-brand').removeClass('fade_in');
+          $('.navbar-brand').addClass('initial-none');
+          initial-none2
+          
+          
+
+        }
+        
+      }); 
+      
+    });
+  </script>
