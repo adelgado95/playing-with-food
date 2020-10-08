@@ -4,24 +4,24 @@
       <div class="container-fluid">
         <div class="row row-vertically-centered bottom-padded-row">
           <div class="row row-max-width row-vertically-centered">
-            {% for recipe in recipes %}
-            <div class="col-12 col-md-4">
-                <a style="text-decoration:None;" href="{{ recipe.get_absolute_url }}">
-                    <img class="row-horizontal_img cardbordered" src="{{ recipe.imagen.url }}" alt="cofeeimage">
-                    <p style="text-align: center;text-decoration: None; color: black ; font-weight: bold;font-size:1.5em">{{ recipe.nombre }}</p>
-                </a>
-              </div>
-            {% endfor %}
+            {% if recipes %}
+              {% for recipe in recipes %}
+              <div class="col-12 col-md-4">
+                  <a style="text-decoration:None;" href="{{ recipe.get_absolute_url }}">
+                      <img class="row-horizontal_img cardbordered" src="{{ recipe.imagen.url }}" alt="cofeeimage">
+                      <p style="text-align: center;text-decoration: None; color: black ; font-weight: bold;font-size:1.5em">{{ recipe.nombre }}</p>
+                  </a>
+                </div>
+              {% endfor %}
+            {% else %}
+            Próximamente Recetas en esta categoría.
+            {% endif %}
           </div>
           
         </div>
       
        
-        <footer class="footer">
-          <div class="container" style="text-align: center;">
-            <span class="text" style="font-weight: bold;">&copy; Playing with Food</span>
-          </div>
-        </footer>
+        {% include 'index/partials/footer.html' %}  
 </div>
 {% include 'index/partials/scripts.html' %}
   </body>

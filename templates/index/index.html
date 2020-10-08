@@ -84,7 +84,7 @@
               <h2 style="flex-grow: 1;margin-top: auto; "></h2>
               <div style="width: 100%;font-size: 3em;">
                 <p class="weighted-title">{{ latest_blog.titulo }}</p>
-                <p style="font-size:0.5em">{{ latest_blog.fecha }} por {{ latest_blog.autor }}</p>
+                <p style="font-size:0.7em; font-family: 'Neuton', serif;">{{ latest_blog.fecha }} por {{ latest_blog.autor }}</p>
               </div>
               
               <div style="width: 100%;font-size:2em">
@@ -139,7 +139,8 @@
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <form >
-                      <p style="font-size: 1em;">Para colaboraciones cotizaciones o para saludar.  Llená el formulario y veamos en qué te puedo ayudar.</p>
+                      <p style="font-size: 1.3em;font-family: 'Neuton', serif;">
+                        Para colaboraciones cotizaciones o para saludar.  Llená el formulario y veamos en qué te puedo ayudar.</p>
                       <div class="form-row" style="margin-top:10px">
                         <div class="form-group col-md-6">
                           <label for="name">Nombre</label>
@@ -177,11 +178,8 @@
 
         </div>
         </div>
-        <footer class="footer">
-          <div class="container" style="text-align: center;">
-            <span class="text" style="font-weight: bold;">&copy; Playing with Food</span>
-          </div>
-        </footer>
+
+        {% include 'index/partials/footer.html' %}        
 </div>
 
 {% include 'index/partials/scripts.html' %}

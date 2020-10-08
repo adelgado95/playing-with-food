@@ -46,7 +46,7 @@
             </div>
 
 
-            <div class="row row-max-width" style="padding-top: 50px;">
+            <div class="row row-max-width bottom-padded-row" style="padding-top: 50px;">
                 <div class="col-12 col-md-6">
                   <img class="row-vertical_img cardbordered" src="https://www.playingwithfoodni.com/static/site/images/index/Foodstying.png" alt="cofeeimage">
                 </div>
@@ -60,8 +60,18 @@
                   
                   <div style="width: 100%;font-size:2em">
                     <p>Dirigido a fotógrafxs y productorxs que busquen una solución visual y creativa a sus producciones gastronómicas.</p>
+                    
                   </div>
                  </div>
+              </div>
+
+              <div class="row row-max-width " style="padding-top: 50px;width: 100%;">
+                <div class="col-12 col-md-12">
+                  <hr style="width: 100%;background:black">
+                  <p style="text-align: center;font-family: 'Poppins', sans-serif;font-size: 4em;font-weight: 800;margin-bottom: 0px;">TRABAJEMOS JUNTXS </p>
+                  <p style="text-align:center">CUALQUIER OTRO PROYECTO QUE INCLUYA COMIDA, ESTOY INTERESAD, ESCRIBIME.</p>
+                  <hr style="width: 100%;background:black">
+                </div>
               </div>
 
               <div class="row row-padded row-vertically-centered bottom-padded-row" style="">
@@ -71,9 +81,10 @@
                   </div>
                   <div class="col-12 col-md-6">
                   </div>
-                 
+                
                   <div class="col-12 col-md-12 " style=" display: flex;justify-content: center;">
-                    <div style="width: 100%; display: flex;justify-items: center;justify-content: center; max-width: 900px;">
+               <div style="width: 100%; display: flex;justify-items: center;justify-content: center; max-width: 900px;"> 
+               <!--       <div style="width: 100%; display: flex;justify-items: center;justify-content: center"></div>-->
                       <div class="row">
                         <div class="col-12 col-md-6 servicios_contactos">
                           <form >
@@ -122,11 +133,7 @@
 
       
         </div>
-        <footer class="footer">
-          <div class="container" style="text-align: center;">
-            <span class="text" style="font-weight: bold;">&copy; Playing with Food</span>
-          </div>
-        </footer>
+        {% include 'index/partials/footer.html' %}  
 </div>
 
 {% include 'index/partials/scripts.html' %}
