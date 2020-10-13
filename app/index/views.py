@@ -1,10 +1,12 @@
 from django.views.generic.base import TemplateView
 from django.template import loader
+from django.http import JsonResponse
 from app.recipes.models import Receta
 from app.blog.models import Entrada
 from app.categories.models import Categoria
 from django.shortcuts import render
 from django.contrib.gis.geoip2 import GeoIP2
+from django.views.decorators.csrf import csrf_exempt
 import requests
 
 
@@ -49,6 +51,29 @@ def recipe_view(request, slug):
 
     return render(request, 'index/recipe.html', context)
 
+def recipe_view_by_id(request, id):
+    print(slug)
+    g = GeoIP2()
+    print(request.META)
+    country = None
+    try:
+        ip = request.META.get('REMOTE_ADDR', None)
+        if ip:
+            country = g.country(ip)['country']
+        else:
+            country = 'Nicaragua'
+    except:
+        pass
+    print("Printing country")
+    print(country)
+    recipe = Receta.objects.get(pk=id)
+    context = {
+        'recipe': recipe,
+        'categories': [ c for c in Categoria.objects.all() ]
+    }
+
+    return render(request, 'index/recipe.html', context)
+
 def entrada_view(request, entrada_id):
     entrada = Entrada.objects.get(pk=entrada_id)
     context = {
@@ -75,3 +100,58 @@ def category_all_view(request):
         'categories': [ c for c in Categoria.objects.all() ]
     }
     return render(request, 'index/category.html', context)
+
+
+class OGTags(TemplateView):
+    """
+    Get OG tags
+    """
+    template_name = 'og/og_tags_receta.html'
+
+    @csrf_exempt
+    def get(self, request, *args, **kwargs):
+        from app.recipes.models import Receta
+
+        try:
+            # get params
+            _entity = kwargs.get('slug')
+            _pk = kwargs.get('pk')
+
+            switch_set = self.switch_class
+            cls = switch_set[_entity]['model']
+
+            qs = {switch_set[_entity]['field']: _pk}
+
+            data = cls.objects.get(**qs)
+
+            self.template_name = 'og/og_tags_%s.html' % _entity
+
+            # Packages lists
+            return self.render_to_response({
+                'data': data
+            })
+        except (Receta.DoesNotExist) as e:
+            return JsonResponse({
+                'status': False
+            })
+
+    @property
+    def switch_class(self):
+        """
+        Return switch report types for agency
+        :return:
+        """
+        from app.recipes.models import Receta
+
+        # Type of report
+        # beneficio = 0
+        # establecimiento = 1
+        # noticia = 2
+
+        # Switch report type
+        return {
+            'receta': {
+                'model': Receta,
+                'field': 'pk'
+            },
+        }

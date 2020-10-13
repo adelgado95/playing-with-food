@@ -7,7 +7,7 @@
           <div class="row row-max-width row-vertically-centered">
             {% if recipes %}
               {% for recipe in recipes %}
-              <div class="col-12 col-md-4">
+              <div class="col-12 col-md-4 category-recipes-div">
                   <a style="text-decoration:None;" href="{{ recipe.get_absolute_url }}">
                       <img class="row-horizontal_img cardbordered" src="{{ recipe.preview.url }}" alt="cofeeimage">
                       <div class="recetas_img recetas_bottom_padding" style="text-align: center;font-weight: 600;font-size: 1.6em; text-decoration:None; color:black">

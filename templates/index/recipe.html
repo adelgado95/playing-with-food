@@ -23,7 +23,7 @@
                     {% if recipe.get_ingredients %}
                       {% for i in recipe.get_ingredients %}
                         <li style="margin-bottom: 5px">
-                          {{i.cantidad}} {{i.nombre}}
+                          {{i}}
                         </li>
                       {% endfor %}
                     {% endif   %}
@@ -33,7 +33,7 @@
                         {% if subrecipe.get_ingredients %}
                           {% for ing in subrecipe.get_ingredients %}
                           <li style="margin-bottom: 5px">
-                            {{ing.cantidad}} {{ing.nombre}}
+                            {{ ing }}
                           </li>
                           {% endfor %}
                         {% endif %}
@@ -44,7 +44,7 @@
                     <h2 style="text-align:left;">Preparación</h2>
                     {% if recipe.get_pasos_preparacion %}
                       {% for paso in recipe.get_pasos_preparacion %}
-                        <p>{{paso.numero}}. {{paso.descripcion}}</p>
+                        <p>{{paso}}.</p>
                       {% endfor %}
                     {% endif  %}
 
@@ -68,9 +68,14 @@
               <h2 style="text-align:left; margin: 20px 0px;">Ver más Recetas</h2>
             </div>
             {% for receta in recipe.get_last_recipes %}
-              <div class="col-12 col-md-4">
+              <div class="col-12 col-md-2" style="align-items: top;">
                 <a href="{{receta.url}}">
-                  <img class="recetas_img " src="{{receta.imagen}}" alt="cofeeimage">
+                  <img class="recetas_img " src="{{receta.preview}}" alt="cofeeimage">
+                </a>
+              </div>
+              <div class="col-12 col-md-2">
+                <a href="{{receta.url}}">
+                  <p>{{receta.title}}</p>
                 </a>
               </div>
             {% endfor %}

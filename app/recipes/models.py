@@ -12,11 +12,13 @@ class Receta(ActiveInactive):
     slug = models.SlugField(max_length=100)
     categoria = models.ForeignKey('categories.Categoria', on_delete=models.PROTECT)
     orden = models.IntegerField(default=100)
-    imagen = models.ImageField(max_length=200)
-    preview = models.ImageField(max_length=200, blank=True, null=True)
+    imagen = models.ImageField()
+    preview = models.ImageField()
     visitas = models.IntegerField(default=1, editable=False)
     estado = models.BooleanField(default=True)
     fecha_creacion = models.DateField(default=datetime.date.today)
+    ingredientes = models.TextField()
+    preparacion = models.TextField()
 
     def get_absolute_url(self):
         return 'recipe/{0}/'.format(self.slug)
@@ -39,14 +41,14 @@ class Receta(ActiveInactive):
     def get_ingredients(self):
         return [
             ingrediente
-            for ingrediente in self.ingrediente_set.all()
+            for ingrediente in self.ingredientes.splitlines()
         ]
     
     @property
     def get_pasos_preparacion(self):
         return [
             paso
-            for paso in self.paso_set.all().order_by('numero')
+            for paso in self.preparacion.splitlines()
         ]
 
     @property
@@ -57,6 +59,7 @@ class Receta(ActiveInactive):
                 'id': r.pk,
                 'title': r.nombre, 
                 'imagen': r.imagen.url ,
+                'preview': r.preview.url,
                 'url': r.get_absolute_url
             } 
             for r in Receta.objects.all().order_by('-fecha_creacion')[:4] 
@@ -70,18 +73,12 @@ class Receta(ActiveInactive):
         return recipes            
 
 
-class Ingrediente(ActiveInactive):
-    nombre = models.CharField(max_length=100)
-    cantidad = models.CharField(max_length=50)
-    receta = models.ForeignKey(Receta, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.nombre
-
-
 class SubReceta(ActiveInactive):
     nombre = models.CharField(max_length=50)
     receta = models.ForeignKey(Receta, on_delete=models.PROTECT)
+    ingredientes = models.TextField()
+    preparacion = models.TextField()
+
 
     def __str__(self):
         return self.nombre
@@ -90,20 +87,5 @@ class SubReceta(ActiveInactive):
     def get_ingredients(self):
         return [
             ingrediente
-            for ingrediente in self.subrecetaingrediente_set.all()
+            for ingrediente in self.ingredientes.splitlines()
         ]
-
-
-class SubRecetaIngrediente(ActiveInactive):
-    nombre = models.CharField(max_length=100)
-    cantidad = models.CharField(max_length=50)
-    subreceta = models.ForeignKey(SubReceta, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.nombre
-
-class Paso(ActiveInactive):
-    numero = models.IntegerField()
-    descripcion = models.TextField()
-    receta = models.ForeignKey(Receta, on_delete=models.PROTECT)
-
