@@ -77,7 +77,6 @@ class SubReceta(ActiveInactive):
     nombre = models.CharField(max_length=50)
     receta = models.ForeignKey(Receta, on_delete=models.PROTECT)
     ingredientes = models.TextField()
-    preparacion = models.TextField()
 
 
     def __str__(self):
