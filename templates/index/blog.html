@@ -1,0 +1,50 @@
+{% include 'index/partials/head.html' %}
+  <body>
+    {% include 'index/partials/navbar.html' %}
+      <div class="container-fluid">
+        {% for entry in entries %}
+        {% if forloop.first %}
+          <div class="row row-padded row-vertically-centered bottom-padded-row">
+        {% else %}
+        <div class="row row-vertically-centered bottom-padded-row">
+        {% endif %}
+            <div class="row row-max-width-lg">
+              {% if not forloop.first %}
+              <hr class="blog_hr">
+              {% endif %}
+              <div class="col-12 col-md-6">
+                <img class="blog_img " src="{{ entry.banner.url }}" alt="cofeeimage">
+                
+              </div>
+
+              <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
+                <h2 style="flex-grow: 1;margin-top: auto; "></h2>
+                <div style="width: 100%;font-size: 3em;">
+                  <p class="weighted-title">{{ entry.titulo }}</p>
+                  <p style="font-size:0.7em; font-family: 'Neuton', serif;">{{ entry.fecha }} por {{ entry.autor }}</p>
+                </div>
+                
+                <div style="width: 100%;font-size:2em">
+                  <p> {{ entry.index_summarize }} ...</p>
+                </div>   
+                <div style="width: 100%;font-size:2em">
+                  <p> <a href="{{ entry.get_absolute_url }}"> Ver mas </a> </p>
+                </div>
+              </div>
+
+             
+            </div>
+          
+          </div>
+          
+        {% endfor %}
+      
+
+      
+      </div>
+        {% include 'index/partials/footer.html' %}  
+</div>
+
+{% include 'index/partials/scripts.html' %}
+  </body>
+</html>

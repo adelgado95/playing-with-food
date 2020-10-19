@@ -102,6 +102,15 @@ def category_all_view(request):
     return render(request, 'index/category.html', context)
 
 
+def blog_view(request):
+    entries = Entrada.objects.all()
+    context = {
+        'entries': entries,
+        'categories': [ c for c in Categoria.objects.all() ]
+    }
+    return render(request, 'index/blog.html', context)
+
+
 class OGTags(TemplateView):
     """
     Get OG tags
