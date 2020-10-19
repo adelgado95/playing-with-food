@@ -1,4 +1,4 @@
 {% if data.imagen %}
-{% include 'og/partials/meta.html' with obj=data title=data.nombre desc=data.nombre img=data.imagen.url id=data.pk%}
+{% include 'og/partials/meta.html' with obj=data title=data.nombre desc=data.nombre img=data.preview.url id=data.pk%}
 <p>hello</p>
 {%endif%}
