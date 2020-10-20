@@ -3,6 +3,7 @@ from django.dispatch import receiver
 import logging
 from app.res.models import ActiveInactive
 import datetime
+from pwfbackend import settings
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +30,10 @@ class Receta(ActiveInactive):
     @property
     def get_absolute_url(self):
         return '/recipe/{0}'.format(self.slug)
+
+    @property
+    def get_og_url(self):
+        return '{0}/og/recipe/{1}'.format(settings.SITE_URL, self.pk)
     
     @property
     def get_sub_recipes(self):

@@ -1,5 +1,6 @@
 {% include 'index/partials/head.html' %}
     <body>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0" nonce="1QIFJNZn"></script>
       {% include 'index/partials/navbar.html' %}
       <div class="container-fluid">
         <div class="row row-vertically-centered bottom-padded-row">
@@ -58,7 +59,11 @@
                     </p>
                     <p><strong>@playingwithfoodni</strong></p>
                     <button style="letter-spacing: 5px;" class="btn btn-primary">Pinear</button>
-                    <button style="letter-spacing: 5px;"  class="btn btn-primary">Compartir</button>
+                    <div class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large">
+                      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">
+                        Compartir
+                      </a>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md-12">

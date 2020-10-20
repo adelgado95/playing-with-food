@@ -13,6 +13,9 @@ class Entrada(ActiveInactive):
     autor = models.CharField(max_length=100)
     visitas = models.IntegerField(default=1, editable=False)
 
+    def __str__(self):
+        return self.titulo
+
     def get_absolute_url(self):
         return '/blog/entrada/{0}/'.format(self.pk)
 

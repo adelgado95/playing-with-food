@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Receta, SubReceta
 
 class RecetaAdmin(admin.ModelAdmin):
-	pass
+	list_display = ('id', 'nombre', 'slug', 'categoria')
 
 class SubRecetaAdmin(admin.ModelAdmin):
 	pass
