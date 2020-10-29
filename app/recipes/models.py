@@ -33,7 +33,7 @@ class Receta(ActiveInactive):
 
     @property
     def get_og_url(self):
-        return '{0}/og/recipe/{1}'.format(settings.SITE_URL, self.pk)
+        return '{0}/og/receta/{1}'.format(settings.SITE_URL, self.pk)
     
     @property
     def get_sub_recipes(self):
