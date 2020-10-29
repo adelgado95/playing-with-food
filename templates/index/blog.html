@@ -20,15 +20,15 @@
               <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
                 <h2 style="flex-grow: 1;margin-top: auto; "></h2>
                 <div style="width: 100%;font-size: 3em;">
-                  <p class="weighted-title">{{ entry.titulo }}</p>
+                  <p class="blog_item_title weighted-title">{{ entry.titulo }}</p>
                   <p style="font-size:0.7em; font-family: 'Neuton', serif;">{{ entry.fecha }} por {{ entry.autor }}</p>
                 </div>
                 
-                <div style="width: 100%;font-size:2em">
+                <div class="blog_p_summarize" style="width: 100%;font-size:2em">
                   <p> {{ entry.index_summarize }} ...</p>
                 </div>   
                 <div style="width: 100%;font-size:2em">
-                  <p> <a href="{{ entry.get_absolute_url }}"> Ver mas </a> </p>
+                  <p class="p_blog"> <a href="{{ entry.get_absolute_url }}"> Ver mas </a> </p>
                 </div>
               </div>
 

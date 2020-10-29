@@ -8,19 +8,19 @@
             <div class="col-12 col-md-12" style="margin-bottom: 10px">
               <img class="recipe_img" src="{{recipe.imagen.url}}" alt="cofeeimage">
             </div>
-            <div class="col-12 col-md-12">
+            <div class="recipe-margin-top col-12 col-md-12">
                 <hr style='border-top: 1px solid black;'>
               </div>
               <div class="col-12 col-md-12">
-                <h1 style="text-align:center">{{recipe.nombre}}</h1>
+                <h1 class="recipe_nombre-h1" >{{recipe.nombre}}</h1>
               </div>
-              <div class="col-12 col-md-12">
+              <div class="recipe-margin-bottom col-12 col-md-12">
                 <hr style='border-top: 1px solid black;'>
               </div>
             
               <div class="row" style="width: 100%;">
                 <div class="col-12 col-md-6" style="margin-right:0px;padding-right:0px;">
-                    <h2 style="text-align:left">Ingredientes</h2>
+                    <h2 class="recipe_subtitle-h2" style="text-align:left">Ingredientes</h2>
                     {% if recipe.get_ingredients %}
                       {% for i in recipe.get_ingredients %}
                         <li style="margin-bottom: 5px">
@@ -41,8 +41,8 @@
                       {% endfor %}
                     {% endif %}
                   </div>
-                <div class="col-12 col-md-6" style="margin-left:0px;padding-left:0px;">
-                    <h2 style="text-align:left;">Preparación</h2>
+                <div class="col-12 col-md-6 preparacion_div" >
+                    <h2 class="recipe_subtitle-h2">Preparación</h2>
                     {% if recipe.get_pasos_preparacion %}
                       {% for paso in recipe.get_pasos_preparacion %}
                         <p>{{paso}}.</p>
@@ -51,13 +51,25 @@
 
                 </div>
             </div>
-            <div class="row row-max-width-lg" style="padding-top: 6vh; padding-bottom: 7vh">
+            <div class="row row-max-width-lg" style="padding-top: 4vh; padding-bottom: 1vh">
                 <div class="col-12 col-md-12" style="background-color: #F6DFA4;padding: 2em;text-align: center;">
-                    <h2>Hiciste esta receta?</h2>
-                    <p style="font-size: 1em">Me encantaría ver el resultado, subila a instragra y etiquetame
-                      
+                    <h2 class="recetas_hiciste-div">¿Hiciste esta receta?</h2>
+                    <p class="hiciste_receta-content-p" style="margin-bottom: 0px;">
+                      Me encantaría ver el resultado, subila a instragram   
                     </p>
-                    <p><strong>@playingwithfoodni</strong></p>
+                    <p style="margin-top:0px" class="hiciste_receta-content-p">
+                      y etiquetame 
+                      <strong>@playingwithfoodni</strong>
+                    </p>
+                    <p class="hiciste_receta-content-p2" style="margin-bottom: 0px;">
+                      Me encantaría ver el resultado,
+                    </p>
+                    <p class="hiciste_receta-content-p2" style="margin-bottom: 0px;">
+                      subila a instragram y etiquetame 
+                    </p>
+                    <p style="margin-top:0px" class="hiciste_receta-content-p2">                    
+                      <strong>@playingwithfoodni</strong>
+                    </p>
                     <button style="letter-spacing: 5px;" class="btn btn-primary">Pinear</button>
                     <div class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large">
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">
@@ -65,12 +77,15 @@
                       </a>
                     </div>
                 </div>
+                <div class="col-12 col-md-12 recipe-autora_div" >
+                  <p><strong>Autora:</strong> Jessica Ruiz</p>
+                </div>
             </div>
             <div class="col-12 col-md-12">
                 <hr style='border-top: 1px solid black;'>
             </div>
-            <div class="col-12">
-              <h2 style="text-align:left; margin: 20px 0px;">Ver más Recetas</h2>
+            <div class="col-12" style="margin-bottom: 1em;">
+              <h2 class="recipe_subtitle-h2">Ver más recetas</h2>
             </div>
             {% for receta in recipe.get_last_recipes %}
               <div class="col-12 col-md-2" style="align-items: top;">
@@ -78,9 +93,9 @@
                   <img class="recetas_img " src="{{receta.preview}}" alt="cofeeimage">
                 </a>
               </div>
-              <div class="col-12 col-md-2">
+              <div class="col-12 col-md-2 recipe_title" style="">
                 <a href="{{receta.url}}">
-                  <p>{{receta.title}}</p>
+                  <p class="recipe_vermas-nombre">{{receta.title}}</p>
                 </a>
               </div>
             {% endfor %}
