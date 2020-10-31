@@ -4,6 +4,7 @@ import logging
 from app.res.models import ActiveInactive
 import datetime
 from pwfbackend import settings
+import urllib.parse
 
 logger = logging.getLogger(__name__)
 
@@ -30,6 +31,23 @@ class Receta(ActiveInactive):
     @property
     def get_absolute_url(self):
         return '/recipe/{0}'.format(self.slug)
+    
+    @property
+    def get_encoded_absolute_url(self):
+        return urllib.parse.quote('https://www.playingwithfoodni.com/recipe/{0}'.format(self.slug))
+
+    @property
+    def get_encoded_imge_url(self):
+        return urllib.parse.quote('https://www.playingwithfoodni.com/{0}'.format(self.imagen.url))
+    
+
+    @property
+    def get_encoded_og_url(self):
+        return urllib.parse.quote('https://www.playingwithfoodni.com/og/receta/{1}'.format(settings.SITE_URL, self.pk))    
+
+    @property
+    def get_encoded_title(self):
+        return urllib.parse.quote(self.nombre)
 
     @property
     def get_og_url(self):
