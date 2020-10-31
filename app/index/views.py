@@ -2,9 +2,10 @@ from django.views.generic.base import TemplateView
 from django.template import loader
 from django.http import JsonResponse
 from app.recipes.models import Receta
-from app.blog.models import Entrada
+from app.blog.models import Entrada, MensajeContacto
 from app.categories.models import Categoria
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 from django.contrib.gis.geoip2 import GeoIP2
 from django.views.decorators.csrf import csrf_exempt
 import requests
@@ -164,3 +165,40 @@ class OGTags(TemplateView):
                 'field': 'pk'
             },
         }
+
+@csrf_exempt
+def contact_message(request):
+    from mailjet_rest import Client
+    name = request.POST.get('name','')
+    lastname = request.POST.get('lastname','')
+    topic = request.POST.get('topic','')
+    message = request.POST.get('message','')
+    api_key = 'ac187360edebf5560d72336576902b91'
+    api_secret = '9293f3d69091470bf0792f6c74541910'
+    mailjet = Client(auth=(api_key, api_secret), version='v3.1')
+    created = MensajeContacto.objects.create(name=name,lastname=lastname, topic=topic, message=message)
+    text = "Nombre: {0} \n Apellidos: {1} \n Asunto: {2} \n Mensaje: {3}".format(name, lastname, topic, message)
+
+    data = {
+    'Messages': [
+        {
+        "From": {
+            "Email": "playingwithfoodni@gmail.com",
+            "Name": "Automail"
+        },
+        "To": [
+            {
+            "Email": "playingwithfoodni@gmail.com",
+            "Name": "Jessica"
+            }
+        ],
+        "Subject": "Mensaje de Contacto Recibido",
+        "TextPart": text,
+        }
+    ]
+    }
+    result = mailjet.send.create(data=data)
+    print(result.status_code)
+    print(result.json())
+    return redirect('/')
+

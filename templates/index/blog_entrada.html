@@ -2,7 +2,7 @@
   <body>
       {% include 'index/partials/navbar.html' %}
       <div class="container-fluid">
-        <div class="row row-vertically-centered bottom-padded-row">
+        <div class="row row-vertically-centered ">
           <div class="row row-max-width row-vertically-centered">
             <div class="col-12 col-md-12" style="margin-bottom: 10px">
               <img class="recipe_img" src="{{entrada.banner.url}}" alt="cofeeimage">
@@ -13,13 +13,17 @@
               <div class="col-12 col-md-12">
                 <p style="text-align:left"> {{ entrada.fecha }} por {{ entrada.autor }}</p>
               </div>
+              {% for content in entrada.get_contents %}
+              {% if content.tipo == 'texto' %}
               <div class="col-12 col-md-12">
-                  {% for p in entrada.get_paragraphs %}
-                  <p style="text-align:left; font-size: 1.3em"> {{ p }}</p>
-                  {% endfor %}
-                
+                <p style="text-align:justify; font-size: 1.3em; padding-bottom:3em;"> {{ content.contenido_texto }}</p>
               </div>
-
+              {% else %}
+              <div class="col-12 col-md-12" style="text-align: center;padding-bottom:3em;">
+                <img class="" style="width:70%" src="{{content.contenido_imagen.url}}" alt="cofeeimage">
+              </div>
+              {% endif %}
+              {% endfor %}
           </div>
           
         </div>

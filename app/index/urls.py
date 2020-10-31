@@ -4,7 +4,7 @@ from app.index import views
 
 urlpatterns = [
 	path('', views.IndexView.as_view(), name='index'),
-	path('services/', views.ServicesView.as_view(), name='index'),
+	path('services/', views.ServicesView.as_view(), name='services'),
 	path('blog/', views.blog_view, name='blog'),
 	#re_path('recipe/(?P<slug>\D+)/', views.recipe_view, name='recipes-recipe'),
 	path('blog/entrada/<int:entrada_id>/', views.entrada_view, name='blog-entrada'),
@@ -13,4 +13,5 @@ urlpatterns = [
 	url(r'^recipe/(?P<id>[\w-]+)/$', views.recipe_view_by_id, name='recipes-recipe'),
 	path('category/', views.category_all_view, name='blog-entrada'),
 	url(r'^og/(?P<slug>[\w-]+)/(?P<pk>\d+)/$', views.OGTags.as_view(), name='get_og_tags'),
+	url('contact/message/', views.contact_message, name='post_contact_message')
 ]

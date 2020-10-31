@@ -70,7 +70,7 @@
                     <p style="margin-top:0px" class="hiciste_receta-content-p2">                    
                       <strong>@playingwithfoodni</strong>
                     </p>
-                    <a data-pin-do="buttonPin" data-pin-count="above" data-pin-tall="true" href="https://www.pinterest.com/pin/create/button/?url=https://www.playingwithfoodni.com&media={{recipe.imagen.url}}&description=Next%20stop%3A%20Pinterest">
+                    <a data-pin-do="buttonBookmark" href="{{recipe.get_absolute_url}}"></a>
                     </a>
                     <div class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large">
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">

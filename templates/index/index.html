@@ -139,26 +139,26 @@
               <div style="width: 100%; display: flex;justify-items: center;justify-content: center; max-width: 900px;">
                 <div class="row">
                   <div class="col-12 col-md-6">
-                    <form >
+                    <form action="/contact/message/" method="POST">
                       <p class="contacto-p">
                         Para colaboraciones cotizaciones o para saludar.  Llená el formulario y veamos en qué te puedo ayudar.</p>
                       <div class="form-row" style="margin-top:10px">
                         <div class="form-group col-md-6">
                           <label for="name">Nombre</label>
-                          <input style="margin-top:10px" type="text" class="form-control" id="name">
+                          <input style="margin-top:10px" type="text" class="form-control" id="name" name="name">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="lastname">Apellidos</label>
-                          <input type="text" class="form-control" style="margin-top:10px" id="lastname">
+                          <input type="text" class="form-control" style="margin-top:10px" id="lastname" name="lastname">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="topic">Asunto</label>
-                        <input type="text" class="form-control" style="margin-top:10px" id="topic" placeholder="">
+                        <input type="text" class="form-control" style="margin-top:10px" id="topic" name="topic" placeholder="">
                       </div>
                       <div class="form-group">
                         <label for="inputAddress2">Mensaje</label>
-                        <input style="margin-top:10px" type="text" class="form-control" id="message" placeholder="">
+                        <input style="margin-top:10px" type="text" class="form-control" id="message" name="message" placeholder="">
                       </div>
                       <div class="form-group">
                       </div>

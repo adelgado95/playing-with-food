@@ -80,9 +80,8 @@ class Receta(ActiveInactive):
 
 class SubReceta(ActiveInactive):
     nombre = models.CharField(max_length=50)
-    receta = models.ForeignKey(Receta, on_delete=models.PROTECT)
+    receta = models.ForeignKey(Receta, on_delete=models.CASCADE)
     ingredientes = models.TextField()
-
 
     def __str__(self):
         return self.nombre
