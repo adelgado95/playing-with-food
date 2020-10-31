@@ -70,8 +70,7 @@
                     <p style="margin-top:0px" class="hiciste_receta-content-p2">                    
                       <strong>@playingwithfoodni</strong>
                     </p>
-                    <a data-pin-do="buttonPin" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/?url={{recipe.get_encoded_absolute_url}}&media={{recipe.get_encoded_imge_url}}"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_16.png" /></a>
-
+                    <div class="addthis_inline_share_toolbox"></div>
                     </a>
                     <div class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large">
                       <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">
@@ -118,5 +117,6 @@
 </div>
 {% include 'index/partials/scripts.html' %}
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f9dbfc55b450b04"></script>
   </body>
 </html>
