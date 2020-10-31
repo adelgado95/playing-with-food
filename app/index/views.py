@@ -18,6 +18,7 @@ class IndexView(TemplateView):
         context = self.get_context_data(**kwargs)
         context['categories'] = [ c for c in Categoria.objects.all() ]
         context['latest_blog'] = Entrada.objects.all().order_by('-fecha')[0]
+        context['title'] = 'Home'
         return self.render_to_response(context)
 
 class ServicesView(TemplateView):
@@ -47,7 +48,8 @@ def recipe_view(request, slug):
     recipe = Receta.objects.get(slug=slug)
     context = {
         'recipe': recipe,
-        'categories': [ c for c in Categoria.objects.all() ]
+        'categories': [ c for c in Categoria.objects.all() ],
+        'title': recipe.nombre
     }
 
     return render(request, 'index/recipe.html', context)
