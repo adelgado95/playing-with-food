@@ -27,9 +27,11 @@ class Entrada(ActiveInactive):
 
     @property
     def index_summarize(self):
+        from django.utils.html import mark_safe
         for content in self.get_contents:
             if content.tipo == 'texto':
-                return content.contenido_texto[:190] if len(content.contenido_texto) > 190 else content.contenido_texto
+                return_content = content.contenido_texto[:190] +'</p>' if len(content.contenido_texto) > 190 else content.contenido_texto
+                return mark_safe(return_content)
         
 
     @property
