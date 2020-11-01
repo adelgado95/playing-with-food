@@ -15,8 +15,8 @@
               </div>
               {% for content in entrada.get_contents %}
               {% if content.tipo == 'texto' %}
-              <div class="col-12 col-md-12">
-                <p style="text-align:justify; font-size: 1.3em; padding-bottom:3em;"> {{ content.contenido_texto }}</p>
+              <div class="col-12 col-md-12" style="padding-bottom:3em; font-size:1.3em; text-align: justify;">
+                {{ content.contenido_texto|safe }}
               </div>
               {% else %}
               <div class="col-12 col-md-12" style="text-align: center;padding-bottom:3em;">

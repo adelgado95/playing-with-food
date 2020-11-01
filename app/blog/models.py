@@ -1,6 +1,9 @@
 from django.db import models
 from app.res.models import ActiveInactive
 import logging
+from ckeditor.fields import RichTextField
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +44,7 @@ class Contenido(ActiveInactive):
     )
     orden = models.IntegerField(default=1)    
     tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
-    contenido_texto = models.TextField(null=True, blank=True)
+    contenido_texto = RichTextField(blank=True,null=True)
     contenido_imagen = models.ImageField(null=True, blank=True)
     entrada = models.ForeignKey(Entrada, on_delete=models.CASCADE, related_name='contenido_entrada')
 
@@ -50,3 +53,4 @@ class MensajeContacto(ActiveInactive):
     lastname = models.CharField(max_length=50)
     topic = models.CharField(max_length=50)
     message = models.TextField()
+    

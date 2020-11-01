@@ -43,8 +43,12 @@ INSTALLED_APPS = [
     'app.index',
     'app.categories',
     'app.recipes',
-    'app.blog'
+    'app.blog',
+    'ckeditor'
 ]
+
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
