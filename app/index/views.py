@@ -16,10 +16,28 @@ class IndexView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
+        self.registry_user_agent(request)
         context['categories'] = [ c for c in Categoria.objects.all() ]
         context['latest_blog'] = Entrada.objects.all().order_by('-fecha')[0]
         context['title'] = 'Home'
+
         return self.render_to_response(context)
+
+    def registry_user_agent(self, request):
+        from app.categories.models import UserAgent
+        UserAgent.objects.create(
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_version = request.user_agentuser_agent.os.family,
+            device_family =  request.user_agent.os.version_string
+        )
+
+
 
 class ServicesView(TemplateView):
     template_name = 'index/services.html'

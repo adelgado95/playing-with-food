@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'app.categories',
     'app.recipes',
     'app.blog',
-    'ckeditor'
+    'ckeditor',
+    'django_user_agents'
 ]
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'pwfbackend.urls'
@@ -80,7 +82,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pwfbackend.wsgi.application'
-
+USER_AGENTS_CACHE = None
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
