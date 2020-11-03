@@ -25,6 +25,7 @@ class IndexView(TemplateView):
 
     def registry_user_agent(self, request):
         from app.categories.models import UserAgent
+        print(request.user_agent.os.version_string)
         UserAgent.objects.create(
             is_mobile = request.user_agent.is_mobile,
             is_tablet = request.user_agent.is_tablet,
@@ -33,8 +34,9 @@ class IndexView(TemplateView):
             is_bot = request.user_agent.is_bot,
             browser_family = request.user_agent.browser.family,
             browser_version = request.user_agent.browser.version_string,
-            os_version = request.user_agentuser_agent.os.family,
-            device_family =  request.user_agent.os.version_string
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family
         )
 
 
