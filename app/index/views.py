@@ -1,14 +1,19 @@
+import requests
+
 from django.views.generic.base import TemplateView
 from django.template import loader
 from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.contrib.gis.geoip2 import GeoIP2
+from django.views.decorators.csrf import csrf_exempt
+
 from app.recipes.models import Receta
 from app.blog.models import Entrada, MensajeContacto
 from app.categories.models import Categoria
-from django.shortcuts import render, redirect
+from app.visits.models import VisitaCategoria, VisitaHome, VisitaReceta, VisitaHomeBlog, VisitaBlog, VisitaServicios, VisitaHomeCategorias
 
-from django.contrib.gis.geoip2 import GeoIP2
-from django.views.decorators.csrf import csrf_exempt
-import requests
+from pwfbackend import settings
+
 
 
 class IndexView(TemplateView):
@@ -24,9 +29,35 @@ class IndexView(TemplateView):
         return self.render_to_response(context)
 
     def registry_user_agent(self, request):
-        from app.categories.models import UserAgent
+        from app.visits.models import VisitaHome
         print(request.user_agent.os.version_string)
-        UserAgent.objects.create(
+        country = get_country_from_request(request)
+        VisitaHome.objects.create(
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family,
+            country=country
+        )
+
+
+class ServicesView(TemplateView):
+    template_name = 'index/services.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        self.registry_user_agent(request)
+        context['categories'] = [ c for c in Categoria.objects.all() ]
+        return self.render_to_response(context)
+
+    def registry_user_agent(self, request):
+        VisitaServicios.objects.create(
             is_mobile = request.user_agent.is_mobile,
             is_tablet = request.user_agent.is_tablet,
             is_touch_capable = request.user_agent.is_touch_capable,
@@ -37,35 +68,31 @@ class IndexView(TemplateView):
             os_family = request.user_agent.os.family,
             os_version = request.user_agent.os.version_string,
             device_family =  request.user_agent.device.family
-        )
-
-
-
-class ServicesView(TemplateView):
-    template_name = 'index/services.html'
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        context['categories'] = [ c for c in Categoria.objects.all() ]
-        return self.render_to_response(context)
-
+        )   
 
 def recipe_view(request, slug):
     print(slug)
     g = GeoIP2()
     print(request.META)
-    country = None
-    try:
-        ip = request.META.get('REMOTE_ADDR', None)
-        if ip:
-            country = g.country(ip)['country']
-        else:
-            country = 'Nicaragua'
-    except:
-        pass
+    country = get_country_from_request(request)
+
     print("Printing country")
     print(country)
     recipe = Receta.objects.get(slug=slug)
+    VisitaReceta.objects.create(
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family,
+            receta = recipe,
+            country=country
+        )  
     context = {
         'recipe': recipe,
         'categories': [ c for c in Categoria.objects.all() ],
@@ -90,6 +117,19 @@ def recipe_view_by_id(request, id):
     print("Printing country")
     print(country)
     recipe = Receta.objects.get(pk=id)
+    VisitaReceta.objects.create(
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family,
+            receta = recipe
+        )  
     context = {
         'recipe': recipe,
         'categories': [ c for c in Categoria.objects.all() ]
@@ -99,6 +139,19 @@ def recipe_view_by_id(request, id):
 
 def entrada_view(request, entrada_id):
     entrada = Entrada.objects.get(pk=entrada_id)
+    VisitaBlog.objects.create(  
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family,
+            entrada = entrada
+            )
     context = {
         'entrada': entrada,
         'categories': [ c for c in Categoria.objects.all() ]
@@ -110,6 +163,19 @@ def entrada_view(request, entrada_id):
 def category_view(request, category):
     category = Categoria.objects.get(nombre=category)
     recipes = Receta.objects.filter(categoria=category)
+    VisitaCategoria.objects.create(  
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family,
+            categoria = category
+            )
     context = {
         'recipes': recipes,
         'categories': [ c for c in Categoria.objects.all() ]
@@ -118,6 +184,18 @@ def category_view(request, category):
 
 def category_all_view(request):
     recipes = Receta.objects.all()
+    VisitaHomeCategorias.objects.create(  
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family
+            )
     context = {
         'recipes': recipes,
         'categories': [ c for c in Categoria.objects.all() ]
@@ -127,6 +205,18 @@ def category_all_view(request):
 
 def blog_view(request):
     entries = Entrada.objects.all()
+    VisitaHomeBlog.objects.create(  
+            is_mobile = request.user_agent.is_mobile,
+            is_tablet = request.user_agent.is_tablet,
+            is_touch_capable = request.user_agent.is_touch_capable,
+            is_pc = request.user_agent.is_pc,
+            is_bot = request.user_agent.is_bot,
+            browser_family = request.user_agent.browser.family,
+            browser_version = request.user_agent.browser.version_string,
+            os_family = request.user_agent.os.family,
+            os_version = request.user_agent.os.version_string,
+            device_family =  request.user_agent.device.family
+            )
     context = {
         'entries': entries,
         'categories': [ c for c in Categoria.objects.all() ]
@@ -195,8 +285,8 @@ def contact_message(request):
     lastname = request.POST.get('lastname','')
     topic = request.POST.get('topic','')
     message = request.POST.get('message','')
-    api_key = 'ac187360edebf5560d72336576902b91'
-    api_secret = '9293f3d69091470bf0792f6c74541910'
+    api_key = settings.MAILJET_APIKEY 
+    api_secret = settings.MAILJET_APISECRET 
     mailjet = Client(auth=(api_key, api_secret), version='v3.1')
     created = MensajeContacto.objects.create(name=name,lastname=lastname, topic=topic, message=message)
     text = "Nombre: {0} \n Apellidos: {1} \n Asunto: {2} \n Mensaje: {3}".format(name, lastname, topic, message)
@@ -224,3 +314,25 @@ def contact_message(request):
     print(result.json())
     return redirect('/')
 
+def get_country_from_request(request):
+    country = None
+    try:
+        ip = get_client_ip(request)
+        country = get_data_by_ip(ip)['country_name']
+    except:
+        country='Nicaragua'
+    return country
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]        
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+def get_data_by_ip(ip):
+    api_key = settings.IP_DATA_APIKEY
+    url = 'https://api.ipdata.co/{0}?api-key={1}'.format(ip, api_key)
+    r = requests.get(url)
+    return r.json()

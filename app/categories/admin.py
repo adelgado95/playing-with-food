@@ -1,13 +1,10 @@
 from django.contrib import admin
-from .models import Categoria, UserAgent
+from .models import Categoria
 
 
 class CategoriaAdmin(admin.ModelAdmin):
 	pass
 
-class UserAgentAdmin(admin.ModelAdmin):
-	pass
-
 
 admin.site.register(Categoria, CategoriaAdmin)
-admin.site.register(UserAgent, UserAgentAdmin)
+

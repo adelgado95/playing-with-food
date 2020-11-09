@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'app.categories',
     'app.recipes',
     'app.blog',
+    'app.visits',
     'ckeditor',
-    'django_user_agents'
+    'django_user_agents',
+    
 ]
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
@@ -123,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'America/Mexico_City'
+TIME_ZONE = 'America/Managua'
 
 USE_I18N = True
 
@@ -177,3 +179,8 @@ JAZZMIN_SETTINGS = {
     'site_header' : 'PWF'
 }
 
+MAILJET_APIKEY = os.getenv('MAILJET_APIKEY','')
+MAILJET_APISECRET = os.getenv('MAILJET_APISECRET','')
+
+
+IP_DATA_APIKEY = '4563fe65e974231b53d1ff935b085f9dbbd8e17a939487edd05e1c36'
