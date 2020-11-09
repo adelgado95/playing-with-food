@@ -282,7 +282,7 @@ class OGTags(TemplateView):
 def contact_message(request):
     from mailjet_rest import Client
     name = request.POST.get('name','')
-    email = request.POST.get('email','')
+    email = request.POST.get('correo','')
     topic = request.POST.get('topic','')
     message = request.POST.get('message','')
     api_key = settings.MAILJET_APIKEY 
