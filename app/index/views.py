@@ -282,14 +282,14 @@ class OGTags(TemplateView):
 def contact_message(request):
     from mailjet_rest import Client
     name = request.POST.get('name','')
-    lastname = request.POST.get('lastname','')
+    email = request.POST.get('email','')
     topic = request.POST.get('topic','')
     message = request.POST.get('message','')
     api_key = settings.MAILJET_APIKEY 
     api_secret = settings.MAILJET_APISECRET 
     mailjet = Client(auth=(api_key, api_secret), version='v3.1')
-    created = MensajeContacto.objects.create(name=name,lastname=lastname, topic=topic, message=message)
-    text = "Nombre: {0} \n Apellidos: {1} \n Asunto: {2} \n Mensaje: {3}".format(name, lastname, topic, message)
+    created = MensajeContacto.objects.create(name=name,email=email, topic=topic, message=message)
+    text = "Nombre: {0} \n Correo: {1} \n Asunto: {2} \n Mensaje: {3}".format(name, email, topic, message)
 
     data = {
     'Messages': [

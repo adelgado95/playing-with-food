@@ -52,7 +52,7 @@ class Contenido(ActiveInactive):
 
 class MensajeContacto(ActiveInactive):
     name = models.CharField(max_length=50)
-    lastname = models.CharField(max_length=50)
+    email = models.CharField(max_length=50,null=True, blank=True)
     topic = models.CharField(max_length=50)
     message = models.TextField()
     
