@@ -23,14 +23,19 @@
           </div>
           <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
             <h2 style="flex-grow: 1;margin-top: auto; "></h2>
-            <div style="width: 100%;font-size: 3em;font-weight: 600;">
+            <div class="hi_jess_div" style="">
               <p class="hi_jess">Hola, soy Jessica</p>
             </div>
             
             <div style="width: 100%;font-size:1.6em">
-              <p class="hi_p">
+              <p class="hi_p graph">
                 Una creativa gráfica que ha tenido la oportunidad de <br>
                 colaborar en producciones locales asistiendo dirección de arte. <br>
+                Disfruto cocinar y tomar fotos.
+              </p>
+              <p class="hi_initial_none">
+                Una creativa gráfica que ha tenido la oportunidad de
+                colaborar en producciones locales asistiendo dirección de arte.
                 Disfruto cocinar y tomar fotos.
               </p>
               <p class="hi_p">
@@ -85,15 +90,15 @@
             </div>
             <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
               <h2 style="flex-grow: 1;margin-top: auto; "></h2>
-              <div style="width: 100%;font-size: 3em;">
+              <div class="div_blog_title">
                 <p class="weighted-title">{{ latest_blog.titulo }}</p>
-                <p style="font-size:0.7em; font-family: 'Neuton', serif;">{{ latest_blog.fecha }} por {{ latest_blog.autor }}</p>
+                <p style="font-size:0.7em; font-family: 'Neuton', serif;text-align:left">{{ latest_blog.fecha }} por {{ latest_blog.autor }}</p>
               </div>
               
               <div style="width: 100%;font-size:1.6em">
                 <p> {{ latest_blog.index_summarize | safe }}</p>
               </div>   
-              <div style="width: 100%;font-size:2em">
+              <div class="ver_mas" >
                 <p> <a href="{{ latest_blog.get_absolute_url }}"> Ver más </a> </p>
               </div>
              </div>
@@ -104,7 +109,7 @@
 
         <div class="row row-padded row-vertically-centered bottom-padded-row" style="background-color:#FFFDF0;">
           <div class="row row-max-width-lg">
-            <div class="col-12">
+            <div class="col-12 servicios_col">
               <h1 style="text-align:center" class="weighted-title">Servicios</h1>
             </div>
             <div class="col-12 col-md-4">
@@ -121,7 +126,7 @@
               </div>
             </div>
             <div class="col-12 col-md-4">
-              <img class="servicios_img" src="https://www.playingwithfoodni.com/static/site/images/index/Foodstying.png" alt="cofeeimage">
+              <img class="servicios_img" src="https://www.playingwithfoodni.com/static/site/images/index/Foodstying.png " alt="cofeeimage">
               <div class="recetas_img recipes-category_sub" style="background-color: #F6DFA4;text-align: center;font-weight: 500;font-size: 1.4em; padding: 10px;min-height: 90px;">
                 Food & Prop styling
               </div>
@@ -131,7 +136,7 @@
         </div>
         <div class="row row-padded row-vertically-centered bottom-padded-row" style="">
           <div class="row row-max-width-lg">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 servicios_col">
               <h1 class="h1_contacto">Contacto</h1>
             </div>
             <div class="col-12 col-md-6">
