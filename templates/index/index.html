@@ -56,18 +56,18 @@
               </a>
             </div>
             <div class="col-12 col-md-4">
-              <a href="/category/Dulce/" style="text-decoration: None;color:black;">
+              <a href="/category/Saladas/" style="text-decoration: None;color:black;">
                 <img class="recetas_img " style="margin-bottom: 0px" src="https://www.playingwithfoodni.com/static/site/images/index/Saladas.png" alt="cofeeimage">
                 <div class="recetas_img recetas_bottom_padding" style="text-align: center;font-weight: 600;font-size: 1.6em">
-                    Dulces
+                    Saladas
                 </div>
               </a>
             </div>
             <div class="col-12 col-md-4">
-              <a href="/category/Dulce/" style="text-decoration: None;color:black;">
+              <a href="/category/Dulces/" style="text-decoration: None;color:black;">
                 <img class="recetas_img" style="margin-bottom: 0px" src="https://www.playingwithfoodni.com/static/site/images/index/Dulces.png" alt="cofeeimage">
                 <div class="recetas_img" style="text-align: center;font-weight: 600;font-size: 1.6em">
-                  Saladas
+                  Dulces
                 </div>
               </a>
             </div>
@@ -89,7 +89,7 @@
               </div>
               
               <div style="width: 100%;font-size:2em">
-                <p> {{ latest_blog.index_summarize }}</p>
+                <p> {{ latest_blog.index_summarize | safe }}</p>
               </div>   
               <div style="width: 100%;font-size:2em">
                 <p> <a href="{{ latest_blog.get_absolute_url }}"> Ver mas </a> </p>
