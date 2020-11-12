@@ -70,12 +70,17 @@
                     <p style="margin-top:0px" class="hiciste_receta-content-p2">                    
                       <strong>@playingwithfoodni</strong>
                     </p>
-                    <a href="https://www.pinterest.com/pin/create/button/?url=https://www.playingwithfoodni.com{{recipe.get_absolute_url}}&media=https://www.playingwithfoodni.com{{recipe.imagen.url}}&description={{recipe.nombre}}"></a>
-                    <div class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large">
-                      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">
-                        Compartir
-                      </a>
+                    <div class="share_container" style="display: flex; justify-content: center;">
+                      <div style="display: inline-block;position: relative;padding-right: 5px;" >
+                        <a id="target" style="height: 100%;background-color: gray !important;" href="https://www.pinterest.com/pin/create/button/?url=https://www.playingwithfoodni.com{{recipe.get_absolute_url}}&media=https://www.playingwithfoodni.com{{recipe.imagen.url}}&description={{recipe.nombre}}"></a>
+                      </div>
+                      <div class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large" style="padding-left: 5px">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">
+                          Compartir
+                        </a>
+                      </div>
                     </div>
+                    
                 </div>
                 <div class="col-12 col-md-12 recipe-autora_div" >
                   <p><strong>Autora:</strong> Jessica Ruiz</p>
