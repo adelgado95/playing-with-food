@@ -280,17 +280,17 @@ class OGTags(TemplateView):
 
 @csrf_exempt
 def contact_message(request):
-    from mailjet_rest import Client
+    from django.core.mail import send_mail
     name = request.POST.get('name','')
     email = request.POST.get('correo','')
     topic = request.POST.get('topic','')
     message = request.POST.get('message','')
-    api_key = settings.MAILJET_APIKEY 
-    api_secret = settings.MAILJET_APISECRET 
-    mailjet = Client(auth=(api_key, api_secret), version='v3.1')
+    #api_key = settings.MAILJET_APIKEY 
+    #api_secret = settings.MAILJET_APISECRET 
+    #mailjet = Client(auth=(api_key, api_secret), version='v3.1')
     created = MensajeContacto.objects.create(name=name,email=email, topic=topic, message=message)
     text = "Nombre: {0} \n Correo: {1} \n Asunto: {2} \n Mensaje: {3}".format(name, email, topic, message)
-
+    """ 
     data = {
     'Messages': [
         {
@@ -311,7 +311,15 @@ def contact_message(request):
     }
     result = mailjet.send.create(data=data)
     print(result.status_code)
-    print(result.json())
+    print(result.json()) """
+    result = send_mail(
+        'Tienes un nuevo mensaje de contacto',
+        text,
+        'automail@playingwithfoodni.com',
+        ['playingwithfooni@gmail.com'],
+        fail_silently=False,
+    )
+    print("The result of the sendmail code was {0}".format(result))
     return redirect('/')
 
 def get_country_from_request(request):
