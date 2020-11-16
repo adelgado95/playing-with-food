@@ -185,6 +185,8 @@ MAILJET_APISECRET = os.getenv('MAILJET_APISECRET','')
 
 IP_DATA_APIKEY = '4563fe65e974231b53d1ff935b085f9dbbd8e17a939487edd05e1c36'
 
-EMAIL_HOST = 'playingwithfoodni.com'
-DEFAULT_FROM_EMAIL = 'root@playingwithfoodni.com'#.format(socket.gethostname())
-SERVER_EMAIL = DEFAULT_FROM_EMAIL
+EMAIL_HOST = 'www.playingwithfoodni.com'
+DEFAULT_FROM_EMAIL = 'automail@playingwithfoodni.com'#.format(socket.gethostname())
+EMAIL_PORT = 25
+EMAIL_USE_TLS = False
+
