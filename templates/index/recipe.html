@@ -72,12 +72,14 @@
                     </p>
                     <div class="share_container" style="display: flex; justify-content: center;">
                       <div style="display: inline-block;position: relative;padding-right: 5px;" >
-                        <a id="target" style="height: 100%;background-color: gray !important;" href="https://www.pinterest.com/pin/create/button/?url=https://www.playingwithfoodni.com{{recipe.get_absolute_url}}&media=https://www.playingwithfoodni.com{{recipe.imagen.url}}&description={{recipe.nombre}}"></a>
+                        <a id="target" data-pin-tall="true" style="height: 100%;background-color: gray !important;" href="https://www.pinterest.com/pin/create/button/?url=https://www.playingwithfoodni.com{{recipe.get_absolute_url}}&media=https://www.playingwithfoodni.com{{recipe.imagen.url}}&description={{recipe.nombre}}"></a>
                       </div>
-                      <div class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large" style="padding-left: 5px">
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">
+                      <div  class="fb-share-button" data-href="{{recipe.get_og_url}}" data-layout="button" data-size="large" style="padding-left: 5px;background-color: black;border-radius: 5px;">
+                        <!--<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ recipe.get_og_url }}" class="fb-xfbml-parse-ignore">
                           Compartir
-                        </a>
+                        </a> -->
+                        <a style="text-decoration: None;" class="button-sharer" href="https://www.facebook.com/sharer/sharer.php?app_id=495293248111352&sdk=joey&u={{recipe.get_og_url}}&display=popup&ref=plugin&src=share_button" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')"><img height="15px" width="15px" src="https://www.playingwithfoodni.com/media/Daco_5790355.png"/> Compartir </a>
+
                       </div>
                     </div>
                     
