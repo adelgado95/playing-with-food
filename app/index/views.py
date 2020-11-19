@@ -321,10 +321,10 @@ def contact_message(request):
     print(result.status_code)
     print(result.json()) """
     result = send_mail(
-        'Tienes un nuevo mensaje de contacto',
+        'Tienes un nuevo mensaje de {0}'.format(name),
         text,
         'automail@playingwithfoodni.com',
-        ['playingwithfoodni@gmail.com', 'delpocho8@gmail.com'],
+        ['playingwithfoodni@gmail.com'],
         fail_silently=False,
     )
     print("The result of the sendmail code was {0}".format(result))
