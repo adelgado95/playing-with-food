@@ -11,20 +11,25 @@ from app.recipes.models import Receta
 from app.blog.models import Entrada, MensajeContacto
 from app.categories.models import Categoria
 from app.visits.models import VisitaCategoria, VisitaHome, VisitaReceta, VisitaHomeBlog, VisitaBlog, VisitaServicios, VisitaHomeCategorias
-
+from app.config.models import IndexConfig, ServiciosConfig
 from pwfbackend import settings
+import logging
 
-
+logger = logging.getLogger(__name__)
 
 class IndexView(TemplateView):
     template_name = 'index/index.html'
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
+        logger.warning('before user agent')
         self.registry_user_agent(request)
+        logger.warning('before db')
         context['categories'] = [ c for c in Categoria.objects.all() ]
         context['latest_blog'] = Entrada.objects.all().order_by('-fecha')[0]
         context['title'] = 'Home'
+        context['config'] = IndexConfig.objects.get(pk=1)
+        logger.warning('after db')
 
         return self.render_to_response(context)
 
@@ -54,6 +59,9 @@ class ServicesView(TemplateView):
         context = self.get_context_data(**kwargs)
         self.registry_user_agent(request)
         context['categories'] = [ c for c in Categoria.objects.all() ]
+        context['config1'] = ServiciosConfig.objects.get(pk=1)
+        context['config2'] = ServiciosConfig.objects.get(pk=2)
+        context['config3'] = ServiciosConfig.objects.get(pk=3)
         return self.render_to_response(context)
 
     def registry_user_agent(self, request):

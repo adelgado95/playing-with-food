@@ -6,21 +6,21 @@
 
         <div class="row row-max-width">
           <div class="col-12 col-md-6">
-            <img class="row-vertical_img cardbordered" src="https://www.playingwithfoodni.com/static/site/images/index/Contenidoredes.png" alt="cofeeimage">
+            <img class="row-vertical_img cardbordered" src="{{config1.imagen.url}}" alt="cofeeimage">
           </div>
 
 
           <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
             <h2 style="flex-grow: 1;margin-top: auto; "></h2>
             <div class="services_titles">
-              <p>Fotografía gastronómica <br> y contenido para redes</p>
+              {{ config1.subtitulo | safe }}
             </div>
             
-            <div style="width: 100%;font-size:2em">
-              <p>Ideal para restaurantes, marcas, bloggers, emprendedores, y creadores gastronómicos 
-                que quieran aterrizas sus platos, ideas o conceptos de una manera fotográfica y audiovisual 
-                para sus redes sociales.
-              </p>
+            <div style="width: 100%;font-size:2em" class="graph">
+              {{ config1.contenido_texto | safe }}
+            </div>
+            <div style="width: 100%;font-size:2em" class="hi_initial_none">
+              {{ config1.contenido_texto_movil | safe }}
             </div>
            </div>
         </div>
@@ -29,32 +29,26 @@
             <div class="col-12 col-md-6 row-bottom-aligned hide-after-recipes" style="font-size:10px">
               <h2 style="flex-grow: 1;margin-top: auto; "></h2>
               <div class="services_titles" style="text-align: right;">
-                <p>Branding Gastronómico</p>
+                {{ config2.subtitulo | safe }}
               </div>
               
               <div style="width: 100%;font-size:2em; text-align:right">
-                <p>Tenés un producto o marca increíble y necesitás una identidad gráfica que refleje 
-                  toda esa genialidad y personalidad de tu trabajo. <br>Cualquier proyecto de gastronomía se puede aterrizar en un 
-                  lenguaje gráfico y visual asombroso.
-                </p>
+                {{ config1.contenido_texto | safe }}
               </div>
               
              </div>
 
              <div class="col-12 col-md-6">
-                <img class="row-vertical_img cardbordered" src="https://www.playingwithfoodni.com/static/site/images/index/Jalea-Chilitos.png" alt="cofeeimage">
+                <img class="row-vertical_img cardbordered" src="{{config2.imagen.url}}" alt="cofeeimage">
               </div>
               <div class=" col-12 col-md-6 row-bottom-aligned initial-none3" style="font-size:10px">
                 <h2 style="flex-grow: 1;margin-top: auto; "></h2>
                 <div class="services_titles">
-                  <p>Branding Gastronómico</p>
+                  {{ config2.subtitulo | safe }}
                 </div>
                 
                 <div style="width: 100%;font-size:2em;">
-                  <p>Tenés un producto o marca increíble y necesitás una identidad gráfica que refleje 
-                    toda esa genialidad y personalidad de tu trabajo. <br>Cualquier proyecto de gastronomía puede aterrizar en un 
-                    lenguaje gráfico y visual asombroso.
-                  </p>
+                  {{ config2.contenido_texto_movil | safe }}
                 </div>
                </div>
   
@@ -64,19 +58,20 @@
 
             <div class="row row-max-width bottom-padded-row" style="padding-top: 50px;">
                 <div class="col-12 col-md-6">
-                  <img class="row-vertical_img cardbordered" src="https://www.playingwithfoodni.com/static/site/images/index/Foodstying.png" alt="cofeeimage">
+                  <img class="row-vertical_img cardbordered" src="{{config3.imagen.url}}" alt="cofeeimage">
                 </div>
-      
-      
+                
                 <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
                   <h2 style="flex-grow: 1;margin-top: auto; "></h2>
                   <div class="services_titles">
-                    <p>Food & Prop styling</p>
+                    {{ config3.subtitulo | safe }}
                   </div>
                   
-                  <div style="width: 100%;font-size:2em">
-                    <p>Dirigido a fotógrafxs y productorxs que busquen una solución visual y creativa a sus producciones gastronómicas.</p>
-                    
+                  <div style="width: 100%;font-size:2em" class="graph">
+                    {{ config3.contenido_texto | safe }}
+                  </div>
+                  <div style="width: 100%;font-size:2em" class="hi_initial_none">
+                    {{ config3.contenido_texto_movil | safe }}
                   </div>
                  </div>
               </div>

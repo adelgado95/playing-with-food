@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'app.recipes',
     'app.blog',
     'app.visits',
+    'app.config',
     'ckeditor',
     'django_user_agents',
     

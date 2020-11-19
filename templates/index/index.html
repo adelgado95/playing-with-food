@@ -24,26 +24,18 @@
           <div class="col-12 col-md-6 row-bottom-aligned" style="font-size:10px">
             <h2 style="flex-grow: 1;margin-top: auto; "></h2>
             <div class="hi_jess_div" style="">
-              <p class="hi_jess">Hola, soy Jessica</p>
+              <p class="hi_jess">
+                {{config.title}}
+              </p>
             </div>
             
             <div style="width: 100%;font-size:1.6em">
-              <p class="hi_p graph">
-                Una creativa gráfica que ha tenido la oportunidad de <br>
-                colaborar en producciones locales asistiendo dirección de arte. <br>
-                Disfruto cocinar y tomar fotos.
-              </p>
-              <p class="hi_initial_none">
-                Una creativa gráfica que ha tenido la oportunidad de
-                colaborar en producciones locales asistiendo dirección de arte.
-                Disfruto cocinar y tomar fotos.
-              </p>
-              <p class="hi_p">
-                De manera intuitiva muchos de mis proyectos (desde la universidad) incluye comida,
-                Playing with Food es una combinación de todas esas cosas que me gustan, con la 
-                intención de crear, aprender y compartir con ustedes.
-
-              </p>
+              <div class="hi_p graph">
+                {{config.contenido_texto | safe}}
+              </div>
+              <div class="hi_initial_none">
+                {{config.contenido_texto_movil | safe}}
+              </div>
             </div>
            </div>
           </div>
