@@ -8,7 +8,7 @@ from pwfbackend import settings
 
 
 class IndexView(TemplateView):
-    template_name = 'reports/base_report.html'
+    template_name = 'reports/index.html'
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)

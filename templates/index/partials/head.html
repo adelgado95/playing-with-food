@@ -267,7 +267,11 @@
           display: block;
           transition: 0.3s;
         }
-        
+        .sidebar .sidebar-initial {
+          display: None;
+          transition: 0.3s;
+        }
+
         .sidebar a:hover {
           color: black;
         }
@@ -392,11 +396,17 @@
           text-decoration: none;
           display: inline-block;
           font-size: 14px;
-          margin: 4px 2px;
+          margin: 4px 8px;
           cursor: pointer;
+          font-family: Arial;
+          font-weight: 900;
           }
-
-
+          .button-sharer:hover {
+            color: white;
+          }
+          .sidebar-initial {
+          display: None;
+        }
       
       @keyframes fadeIn{
         from {
@@ -562,7 +572,9 @@
         .services_titles {
           font-size: 2.5em;
         }
-        
+        .sidebar-initial {
+          display: None;
+        }
 
 
       }
