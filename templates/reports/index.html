@@ -105,7 +105,7 @@ $(function() {
       success: function( response ) {
         console.log( response.data );
         if (type === "grafico"){
-
+          $('#myChart').empty();
           var ctx = document.getElementById('myChart');
           var myChart = new Chart(ctx, {
               type: 'line',
