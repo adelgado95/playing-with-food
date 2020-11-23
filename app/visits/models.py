@@ -24,13 +24,37 @@ class VisitaHomeCategorias(Visita):
 class VisitaHome(Visita):
     date_time = models.DateTimeField(auto_now_add=True, verbose_name='Fecha y Hora', null=True)
     country = models.CharField(max_length=50, null=True, blank=True)
-
+    
+    @property
+    def to_dict(self):
+        return {
+            'date': self.date_time.strftime("%d/%m/%Y"),
+            'country': self.country,
+            'is_mobile' : self.is_mobile, 
+            'is_tablet' : self.is_tablet, 
+            'is_pc' : self.is_pc,
+            'is_bot' : self.is_bot, 
+            'device_family' : self.device_family,
+            'os_family': self.os_family
+        }
 
 class VisitaReceta(Visita):
     receta = models.ForeignKey(to='recipes.Receta', on_delete=models.PROTECT)
     date_time = models.DateTimeField(auto_now_add=True, verbose_name='Fecha y Hora', null=True)
     country = models.CharField(max_length=50, null=True, blank=True)
-
+    
+    @property
+    def to_dict(self):
+        return {
+            'date': self.date_time.strftime("%d/%m/%Y"),
+            'country': self.country,
+            'is_mobile' : self.is_mobile, 
+            'is_tablet' : self.is_tablet, 
+            'is_pc' : self.is_pc,
+            'is_bot' : self.is_bot, 
+            'device_family' : self.device_family,
+            'os_family': self.os_family
+        }
 
 class VisitaHomeBlog(Visita):
     pass

@@ -1,0 +1,147 @@
+{% extends 'admin/base_site.html' %}
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
+{% endblock %}
+
+{% block content_title %}
+{{ report_title }}
+{% endblock %}
+{% block content %}
+<form id="form" style="width: 100%;">
+      <div class="row">
+        <div class="col">
+          <label for="exampleFormControlSelect1">Seleccionar Página</label>
+          <select class="form-control" id="selectPaginas" name="selectPaginas">
+          <option value="VisitaHome">Visistas Página Principal</option>
+          <option value="VisitaReceta">Visistas Recetas</option>
+        <!--  <option value="VisitaBlog">Visista Blogs</option>
+          <option value="VisitaCategoria">Visita Categorías</option>
+          <option value="VisitaHomeBlog">Visita Principal Blogs</option>
+          <option value="VisitaHomeCategorias">Visita Principal Categorías</option>-->
+        </select>
+        </div>
+
+        <div class="col">
+          <label for="exampleFormControlSelect2">Seleccionar Mes</label>
+          <select class="form-control" id="selectMonth" name="selectMonth">
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="exampleFormControlSelect2">Seleccionar Ano</label>
+          <select class="form-control" id="selectYear" name="selectYear">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="exampleFormControlSelect1">Seleccionar Tipo de Reporte</label>
+          <select class="form-control" id="selectTipo" name="selectTipo">
+            <option value="grafico">Gráfico</option>
+            <option value="tabla">Tabla</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="exampleFormControlSelect1">Agrupar por</label>
+          <select class="form-control" id="selectParameter" name="selectParameter">
+            <option value="total">Total</option>
+            <option value="country">Pais</option>
+            <option value="device">Dispositivo</option>
+            <option value="os">Sistema Operativo</option>
+          </select>
+        </div>
+      </div>
+     
+      <div class="form-group">
+        <input style="margin-top: 5px;" value="Enviar" type="button" id="btnSubmit" class="btn btn-success"></input>
+      </div>
+</form>
+
+<div style="width:100%;height:100%;">
+  <canvas id="myChart" style="width:100% !important;height:40vh !important;">
+
+  </canvas>
+  <table class="table">
+   
+  </table>
+ 
+</div>
+
+
+{% endblock %}
+
+{% block extrajs %}
+{{block.super}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script>
+$(function() {
+    console.log( "ready!" );
+    $( "#btnSubmit" ).click(function() {
+      console.log("Hello");
+      console.log($( "form" ).serialize());
+      var type = $('#selectTipo').children("option:selected").val();
+      var groupBy = $('#selectParameter').children("option:selected").val();
+      console.log(type);
+      var formData = $( "form" ).serialize();
+      $.ajax( {
+      type: "POST",
+      url: "/api/reports/",
+      data: formData,
+      success: function( response ) {
+        console.log( response.data );
+        if (type === "grafico"){
+
+          var ctx = document.getElementById('myChart');
+          var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: response.data['labels'],
+                  datasets: [{
+                      label: 'Visits',
+                      fill: false,
+                      data: response.data['data'],
+                      borderWidth: 5,
+                      borderColor: [
+                          'rgba(255, 99, 132, 1)',
+                      ],
+                  }]
+              },
+              options: {
+                  responsive: false
+              }
+          });
+        
+          $('.table').empty();
+        $('.table').append('<thead><tr><td>Group</td><td>Count</td></tr></thead><tbody></tbody>');
+        
+        jQuery.each(response.data.result, function(i, val) {
+            console.log(i);
+            console.log(val);
+            $('tbody').append('<tr><td>'+ i +'</td><td>'+ val +'</td></tr>');
+        }); 
+
+        }
+        else {
+          $('#myChart').css('display','None');
+        }
+      }
+    } );
+    });
+});
+</script>
+{% endblock %}

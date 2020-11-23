@@ -10,11 +10,26 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
 }
     $(document).ready(function(){
+      var displayed = false;
+      $('#sideBarDropDown').click(function(){
+          console.log("hola!");
+          if (displayed){
+            $('.sidebar-initial').css('display','none');
+            displayed=false;
+          }
+          else {
+            $('.sidebar-initial').css('display','block');
+            displayed=true;
+          }
+          
+
+        });
 
 
       var scrollTop = 0;
       $(window).scroll(function(){
         
+
         scrollTop = $(window).scrollTop();
         $('.counter').html(scrollTop);
         

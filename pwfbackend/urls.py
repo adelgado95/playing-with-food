@@ -24,6 +24,7 @@ from app.index import urls
 
 urlpatterns = i18n_patterns(
 	path('',include('app.index.urls')),
+    path('api/',include('app.api.urls')),
     path('reports/',include('app.reports.urls')),
     
     path('admin/', admin.site.urls),
