@@ -1,4 +1,11 @@
 from django.db import models
+from django.utils import timezone
+
+
+class VisibleManager(models.Manager):
+    def get_queryset(self):
+        return super(VisibleManager, self).get_queryset().filter(visible=True)
+
 
 class ActiveInactive(models.Model):
     visible = models.BooleanField(default=True, editable=False)

@@ -177,8 +177,24 @@ SITE_URL = 'https://www.playingwithfoodni.com'
 
 JAZZMIN_SETTINGS = {
     'site_title' : 'PWF Panel de Administración',
-    'site_header' : 'PWF'
+    'site_header' : 'PWF',
+    "custom_links": {
+        "visits": [{
+            "name": "Reportes",
+            "url": "/reports",
+            "icon": "fas fa-comments",
+        }]
+    },
+    "show_ui_builder": True,
+    "theme": "simplex",
 }
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "simplex",
+    "dark_mode_theme": "darkly",
+}
+
+JAZZMIN_SETTINGS["show_ui_builder"] = True
 
 MAILJET_APIKEY = os.getenv('MAILJET_APIKEY','')
 MAILJET_APISECRET = os.getenv('MAILJET_APISECRET','')

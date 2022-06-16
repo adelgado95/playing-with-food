@@ -4,6 +4,7 @@ services:
   pwf-db:
     image: postgres
     container_name: pwf-db
+    restart: always
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     environment:
@@ -17,6 +18,7 @@ services:
   pwf-admin:
     container_name: pwf-admin
     build: .
+    restart: always
     command: python manage.py runserver 0.0.0.0:8000
     env_file:
       - local.env
@@ -30,6 +32,7 @@ services:
       - pwfnetwork
 
   pwf-redis00:
+    restart: always
     image: "redis:5.0"
     container_name: pwf-redis00
     environment:

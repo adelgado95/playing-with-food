@@ -59,7 +59,21 @@ class VisitaReceta(Visita):
 class VisitaHomeBlog(Visita):
     pass
 class VisitaBlog(Visita):
-    entrada = models.ForeignKey(to='blog.Entrada', on_delete=models.PROTECT)
+    entrada = models.ForeignKey(to='blog.Entrada', on_delete=models.CASCADE)
+    date_time = models.DateTimeField(auto_now_add=True, verbose_name='Fecha y Hora', null=True)
+    @property
+    def to_dict(self):
+        return {
+            'date': self.date_time.strftime("%d/%m/%Y"),
+            'country': 'Nicaragua',
+            'is_mobile' : self.is_mobile,
+            'is_tablet' : self.is_tablet,
+            'is_pc' : self.is_pc,
+            'is_bot' : self.is_bot,
+            'device_family' : self.device_family,
+            'os_family': self.os_family
+        }
+
 
 class VisitaServicios(Visita):
     pass

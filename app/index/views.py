@@ -324,7 +324,7 @@ def contact_message(request):
         'Tienes un nuevo mensaje de {0}'.format(name),
         text,
         'automail@playingwithfoodni.com',
-        ['playingwithfoodni@gmail.com'],
+        ['playingwithfoodni@gmail.com','delpocho8@gmail.com'],
         fail_silently=False,
     )
     print("The result of the sendmail code was {0}".format(result))

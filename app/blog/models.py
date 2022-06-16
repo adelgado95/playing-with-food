@@ -1,5 +1,5 @@
 from django.db import models
-from app.res.models import ActiveInactive
+from app.res.models import ActiveInactive, VisibleManager
 import logging
 from ckeditor.fields import RichTextField
 
@@ -14,7 +14,7 @@ class Entrada(ActiveInactive):
     fecha = models.DateField()
     autor = models.CharField(max_length=100)
     visitas = models.IntegerField(default=1, editable=False)
-
+    objects = VisibleManager()
     def __str__(self):
         return self.titulo
 
